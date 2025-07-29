@@ -1,429 +1,990 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rohit Kumar - Salesforce Technical Architect</title>
+
+    <!-- Tailwind CSS with fallback -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+      // Fallback if Tailwind fails to load
+      if (typeof tailwind === "undefined") {
+        console.warn("Tailwind CSS failed to load, using fallback styles");
+        document.head.insertAdjacentHTML(
+          "beforeend",
+          `
+                <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+            `
+        );
+      }
+    </script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Google Fonts with fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+      /* CSS Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Fallback font stack */
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: #f8fafc;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Ensure images load properly */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Ensure links are properly styled */
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Custom styles with more specific selectors */
+      .achievement-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid;
+        display: block;
+      }
+
+      .achievement-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      .publication-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid;
+        display: block;
+      }
+
+      .publication-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      .education-item {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .education-item:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 1rem;
+        height: 1rem;
+        background-color: #3b82f6;
+        border-radius: 50%;
+      }
+
+      .check-icon {
+        color: #10b981 !important;
+      }
+
+      .section-title {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-title:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        height: 1.25rem;
+        width: 0.5rem;
+        background: #3b82f6;
+        border-radius: 0.25rem;
+      }
+
+      /* Ensure proper spacing and layout */
+      .max-w-5xl {
+        max-width: 64rem;
+      }
+
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .py-8 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      /* Grid layout fallbacks */
+      .grid {
+        display: grid;
+      }
+
+      .grid-cols-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .gap-8 {
+        gap: 2rem;
+      }
+
+      /* Responsive breakpoints */
+      @media (min-width: 1024px) {
+        .lg\:grid-cols-3 {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
-        
-        .achievement-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid;
+
+        .lg\:col-span-1 {
+          grid-column: span 1 / span 1;
         }
-        
-        .achievement-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+        .lg\:col-span-2 {
+          grid-column: span 2 / span 2;
         }
-        
-        .publication-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid;
+      }
+
+      /* Card styles */
+      .bg-white {
+        background-color: #ffffff;
+      }
+
+      .rounded-xl {
+        border-radius: 0.75rem;
+      }
+
+      .shadow-sm {
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      .p-6 {
+        padding: 1.5rem;
+      }
+
+      /* Text styles */
+      .text-gray-800 {
+        color: #1f2937;
+      }
+
+      .text-gray-900 {
+        color: #111827;
+      }
+
+      .text-gray-600 {
+        color: #4b5563;
+      }
+
+      .text-blue-600 {
+        color: #2563eb;
+      }
+
+      /* Typography */
+      .text-3xl {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+      }
+
+      .text-xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+
+      .font-bold {
+        font-weight: 700;
+      }
+
+      .font-semibold {
+        font-weight: 600;
+      }
+
+      /* Flexbox utilities */
+      .flex {
+        display: flex;
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      /* Spacing utilities */
+      .space-y-8 > * + * {
+        margin-top: 2rem;
+      }
+
+      .space-y-4 > * + * {
+        margin-top: 1rem;
+      }
+
+      .mb-8 {
+        margin-bottom: 2rem;
+      }
+
+      .mt-2 {
+        margin-top: 0.5rem;
+      }
+
+      .mt-4 {
+        margin-top: 1rem;
+      }
+
+      .mt-6 {
+        margin-top: 1.5rem;
+      }
+
+      .mt-8 {
+        margin-top: 2rem;
+      }
+
+      /* Responsive utilities */
+      @media (min-width: 768px) {
+        .md\:flex-row {
+          flex-direction: row;
         }
-        
-        .publication-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+        .md\:items-center {
+          align-items: center;
         }
-        
-        .education-item {
-            position: relative;
-            padding-left: 2rem;
+
+        .md\:mt-0 {
+          margin-top: 0;
         }
-        
-        .education-item:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.5rem;
-            width: 1rem;
-            height: 1rem;
-            background-color: #3b82f6;
-            border-radius: 50%;
+      }
+
+      /* Additional utility classes */
+      .text-sm {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+
+      .text-xs {
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+
+      .text-lg {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+      }
+
+      .text-gray-500 {
+        color: #6b7280;
+      }
+
+      .bg-blue-50 {
+        background-color: #eff6ff;
+      }
+
+      .bg-blue-100 {
+        background-color: #dbeafe;
+      }
+
+      .bg-purple-50 {
+        background-color: #faf5ff;
+      }
+
+      .bg-purple-100 {
+        background-color: #f3e8ff;
+      }
+
+      .bg-gradient-to-r {
+        background-image: linear-gradient(to right, var(--tw-gradient-stops));
+      }
+
+      .from-blue-50 {
+        --tw-gradient-from: #eff6ff;
+        --tw-gradient-stops: var(--tw-gradient-from),
+          var(--tw-gradient-to, rgba(239, 246, 255, 0));
+      }
+
+      .to-white {
+        --tw-gradient-to: #ffffff;
+      }
+
+      .from-purple-50 {
+        --tw-gradient-from: #faf5ff;
+        --tw-gradient-stops: var(--tw-gradient-from),
+          var(--tw-gradient-to, rgba(250, 245, 255, 0));
+      }
+
+      .border-l-blue-500 {
+        border-left-color: #3b82f6;
+      }
+
+      .border-l-purple-500 {
+        border-left-color: #8b5cf6;
+      }
+
+      .rounded-lg {
+        border-radius: 0.5rem;
+      }
+
+      .rounded-full {
+        border-radius: 9999px;
+      }
+
+      .p-3 {
+        padding: 0.75rem;
+      }
+
+      .p-4 {
+        padding: 1rem;
+      }
+
+      .p-2 {
+        padding: 0.5rem;
+      }
+
+      .mr-1 {
+        margin-right: 0.25rem;
+      }
+
+      .mr-2 {
+        margin-right: 0.5rem;
+      }
+
+      .mr-3 {
+        margin-right: 0.75rem;
+      }
+
+      .mr-4 {
+        margin-right: 1rem;
+      }
+
+      .mb-3 {
+        margin-bottom: 0.75rem;
+      }
+
+      .space-x-4 > * + * {
+        margin-left: 1rem;
+      }
+
+      .space-x-2 > * + * {
+        margin-left: 0.5rem;
+      }
+
+      .list-disc {
+        list-style-type: disc;
+      }
+
+      .pl-5 {
+        padding-left: 1.25rem;
+      }
+
+      .px-3 {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+
+      .py-1 {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+
+      .font-medium {
+        font-weight: 500;
+      }
+
+      .hover\:text-blue-600:hover {
+        color: #2563eb;
+      }
+
+      .hover\:underline:hover {
+        text-decoration: underline;
+      }
+
+      .inline-block {
+        display: inline-block;
+      }
+
+      .flex-1 {
+        flex: 1 1 0%;
+      }
+
+      .items-start {
+        align-items: flex-start;
+      }
+
+      .justify-start {
+        justify-content: flex-start;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      /* Grid utilities */
+      .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @media (min-width: 768px) {
+        .md\:grid-cols-2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-        
-        .check-icon {
-            color: #10b981;
-        }
-        
-        .section-title {
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .section-title:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.5rem;
-            height: 1.25rem;
-            width: 0.5rem;
-            background: #3b82f6;
-            border-radius: 0.25rem;
-        }
+      }
     </style>
-</head>
-<body class="text-gray-800">
+
+    <script>
+      // Check if CSS is loading properly
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if Tailwind is available
+        if (typeof tailwind === "undefined") {
+          // Fallback if Tailwind fails to load
+          document.head.insertAdjacentHTML(
+            "beforeend",
+            `
+            <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+          `
+          );
+        }
+      });
+    </script>
+  </head>
+  <body class="text-gray-800">
     <div class="max-w-5xl mx-auto px-4 py-8">
-        <!-- Header -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">Rohit Kumar</h1>
-                <h2 class="text-xl text-blue-600 font-semibold">Salesforce Technical Architect</h2>
-                <p class="text-gray-600 mt-2">10+ years of IT experience | 6+ years in Salesforce</p>
-            </div>
-            <div class="mt-4 md:mt-0">
-                <div class="flex space-x-4">
-                    <a href="https://www.linkedin.com/in/rohit-kumar-81916b190/" class="text-gray-600 hover:text-blue-600">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="https://www.salesforce.com/trailblazer/cloudyrohit" class="text-gray-600 hover:text-blue-600">
-                        <i class="fas fa-trailhead text-xl"></i>
-                    </a>
-                    <a href="https://salesforcehunt.blogspot.com" class="text-gray-600 hover:text-blue-600">
-                        <i class="fas fa-blog text-xl"></i>
-                    </a>
-                </div>
-                <div class="mt-2 text-sm text-gray-600">
-                    <p><i class="fas fa-envelope mr-2"></i> rohit007salesforce@gmail.com</p>
-                    <p><i class="fas fa-phone-alt mr-2"></i> +60 1121764063</p>
-                    <p><i class="fas fa-map-marker-alt mr-2"></i> Cyberjaya, Selangor, Malaysia</p>
-                </div>
-            </div>
+      <!-- Header -->
+      <div
+        class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Rohit Kumar</h1>
+          <h2 class="text-xl text-blue-600 font-semibold">
+            Salesforce Technical Architect
+          </h2>
+          <p class="text-gray-600 mt-2">
+            10+ years of IT experience | 6+ years in Salesforce
+          </p>
         </div>
-        
-        <!-- Main Content -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Left Column -->
-            <div class="lg:col-span-1 space-y-8">
-                <!-- About -->
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="section-title text-xl font-semibold">About</h3>
-                    <p class="text-gray-600">
-                        Salesforce Technical Architect with 10+ years of IT experience including 6+ years specializing in Salesforce CRM platform.
-                        Expertise in system and application architecture, administration, development, configuration, implementation,
-                        Lightning components, and integration.
+        <div class="mt-4 md:mt-0">
+          <div class="flex space-x-4">
+            <a
+              href="https://www.linkedin.com/in/rohit-kumar-81916b190/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-600 hover:text-blue-600">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+            <a
+              href="https://www.salesforce.com/trailblazer/cloudyrohit"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-600 hover:text-blue-600">
+              <i class="fas fa-trailhead text-xl"></i>
+            </a>
+            <a
+              href="https://salesforcehunt.blogspot.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-600 hover:text-blue-600">
+              <i class="fas fa-blog text-xl"></i>
+            </a>
+          </div>
+          <div class="mt-2 text-sm text-gray-600">
+            <p>
+              <i class="fas fa-envelope mr-2"></i>
+              rohit007salesforce@gmail.com
+            </p>
+            <p>
+              <i class="fas fa-phone-alt mr-2"></i>
+              +60 1121764063
+            </p>
+            <p>
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              Cyberjaya, Selangor, Malaysia
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column -->
+        <div class="lg:col-span-1 space-y-8">
+          <!-- About -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="section-title text-xl font-semibold">About</h3>
+            <p class="text-gray-600">
+              Salesforce Technical Architect with 10+ years of IT experience
+              including 6+ years specializing in Salesforce CRM platform.
+              Expertise in system and application architecture, administration,
+              development, configuration, implementation, Lightning components,
+              and integration.
+            </p>
+          </div>
+
+          <!-- Education -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="section-title text-xl font-semibold">Education</h3>
+            <div class="space-y-4">
+              <div class="education-item">
+                <h4 class="font-medium">UPTU University</h4>
+                <p class="text-sm text-gray-600">
+                  Bachelor in Information Technology
+                </p>
+                <div class="flex items-center text-xs text-gray-500 mt-1">
+                  <i class="fas fa-map-marker-alt mr-1"></i>
+                  <span class="mr-3">Lucknow, India</span>
+                  <i class="fas fa-calendar-alt mr-1"></i>
+                  <span>2014</span>
+                </div>
+              </div>
+              <div class="education-item">
+                <h4 class="font-medium">FIT Engineering College</h4>
+                <p class="text-sm text-gray-600">B.Tech</p>
+                <div class="flex items-center text-xs text-gray-500 mt-1">
+                  <i class="fas fa-map-marker-alt mr-1"></i>
+                  <span class="mr-3">Meerut, India</span>
+                  <i class="fas fa-calendar-alt mr-1"></i>
+                  <span>2010</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievements -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="section-title text-xl font-semibold">Achievements</h3>
+            <div class="space-y-4">
+              <div
+                class="achievement-card bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg border-l-blue-500">
+                <div class="flex items-center">
+                  <div class="bg-blue-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-trophy text-blue-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Agentforce Innovator</h4>
+                    <div class="flex items-center text-sm text-gray-600 mt-1">
+                      <i class="fas fa-trailhead text-blue-500 mr-2"></i>
+                      <span>Trailhead</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="achievement-card bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg border-l-blue-500">
+                <div class="flex items-center">
+                  <div class="bg-blue-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-star text-blue-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">All Star Ranger</h4>
+                    <div class="flex items-center text-sm text-gray-600 mt-1">
+                      <i class="fas fa-trailhead text-blue-500 mr-2"></i>
+                      <span>Trailblazer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Publications -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="section-title text-xl font-semibold">Publications</h3>
+            <div class="space-y-4">
+              <div
+                class="publication-card bg-gradient-to-r from-purple-50 to-white p-4 rounded-lg border-l-purple-500">
+                <div class="flex items-start">
+                  <div class="bg-purple-100 p-3 rounded-full mr-4">
+                    <i
+                      class="fas fa-graduation-cap text-purple-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">VS Code Tips and Tricks</h4>
+                    <div class="flex items-center text-sm text-gray-600 mt-1">
+                      <i class="fas fa-check-circle check-icon mr-2"></i>
+                      <span>Udemy</span>
+                    </div>
+                    <a
+                      href="https://www.udemy.com/course/mastering-visual-studio-code-2022-with-salesforce/?couponCode=ST7MT290425G3"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-purple-600 hover:underline mt-2 inline-block">
+                      <i class="fas fa-external-link-alt mr-1"></i>
+                      View Course
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="publication-card bg-gradient-to-r from-purple-50 to-white p-4 rounded-lg border-l-purple-500">
+                <div class="flex items-start">
+                  <div class="bg-purple-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-code text-purple-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Dark Theme</h4>
+                    <div class="flex items-center text-sm text-gray-600 mt-1">
+                      <i class="fas fa-check-circle check-icon mr-2"></i>
+                      <span>VS Code Extension</span>
+                    </div>
+                    <a
+                      href="https://marketplace.visualstudio.com/items?itemName=SalesforceHunt.salesforcehunt-dark"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-purple-600 hover:underline mt-2 inline-block">
+                      <i class="fas fa-external-link-alt mr-1"></i>
+                      View Extension
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="publication-card bg-gradient-to-r from-purple-50 to-white p-4 rounded-lg border-l-purple-500">
+                <div class="flex items-start">
+                  <div class="bg-purple-100 p-3 rounded-full mr-4">
+                    <i class="fab fa-chrome text-purple-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Salesforce Deployment Tracker</h4>
+                    <div class="flex items-center text-sm text-gray-600 mt-1">
+                      <i class="fas fa-check-circle check-icon mr-2"></i>
+                      <span>Chrome Extension</span>
+                    </div>
+                    <a
+                      href="https://chromewebstore.google.com/detail/salesforce-deployment-tra/apcmonlfpedicmdcneglaekjlcpgajmp"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-purple-600 hover:underline mt-2 inline-block">
+                      <i class="fas fa-external-link-alt mr-1"></i>
+                      View Extension
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="publication-card bg-gradient-to-r from-purple-50 to-white p-4 rounded-lg border-l-purple-500">
+                <div class="flex items-start">
+                  <div class="bg-purple-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-blog text-purple-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Blog</h4>
+                    <div class="flex items-center text-sm text-gray-600 mt-1">
+                      <i class="fas fa-check-circle check-icon mr-2"></i>
+                      <span>Website</span>
+                    </div>
+                    <a
+                      href="https://salesforcehunt.blogspot.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm text-purple-600 hover:underline mt-2 inline-block">
+                      <i class="fas fa-external-link-alt mr-1"></i>
+                      Visit Blog
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Experience -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="section-title text-xl font-semibold">Work Experience</h3>
+
+            <!-- Dell Technologies -->
+            <div class="flex items-start mt-6">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-laptop-code text-blue-600 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg">Technical Architect</h4>
+                    <p class="text-blue-600 font-medium">Dell Technologies</p>
+                  </div>
+                  <div
+                    class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                    Jun 2022 - Present
+                  </div>
+                </div>
+                <div class="mt-4 space-y-4">
+                  <div>
+                    <h5 class="font-semibold text-gray-800">
+                      Key Achievements:
+                    </h5>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
+                      <li>
+                        Led the design and implementation of complex Salesforce
+                        solutions for enterprise clients
+                      </li>
+                      <li>
+                        Automated processes using Lightning Flow, LWC, and Apex
+                        frameworks
+                      </li>
+                      <li>
+                        Developed custom REST API frameworks for seamless
+                        integrations
+                      </li>
+                      <li>
+                        Optimized Apex code and improved system performance
+                      </li>
+                      <li>
+                        Mentored junior developers and conducted technical
+                        training sessions
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Perficient -->
+            <div class="flex items-start mt-8">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-code text-blue-600 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg">Technical Consultant</h4>
+                    <p class="text-blue-600 font-medium">
+                      Perficient India Pvt. Ltd.
                     </p>
+                  </div>
+                  <div
+                    class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                    Dec 2020 - Apr 2022
+                  </div>
                 </div>
-                
-                <!-- Education -->
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="section-title text-xl font-semibold">Education</h3>
-                    <div class="space-y-4">
-                        <div class="education-item">
-                            <h4 class="font-medium">UPTU University</h4>
-                            <p class="text-sm text-gray-600">Bachelor in Information Technology</p>
-                            <div class="flex items-center text-xs text-gray-500 mt-1">
-                                <i class="fas fa-map-marker-alt mr-1"></i>
-                                <span class="mr-3">Lucknow, India</span>
-                                <i class="fas fa-calendar-alt mr-1"></i>
-                                <span>2014</span>
-                            </div>
-                        </div>
-                        <div class="education-item">
-                            <h4 class="font-medium">FIT Engineering College</h4>
-                            <p class="text-sm text-gray-600">B.Tech</p>
-                            <div class="flex items-center text-xs text-gray-500 mt-1">
-                                <i class="fas fa-map-marker-alt mr-1"></i>
-                                <span class="mr-3">Meerut, India</span>
-                                <i class="fas fa-calendar-alt mr-1"></i>
-                                <span>2010</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mt-4 space-y-4">
+                  <div>
+                    <h5 class="font-semibold text-gray-800">
+                      Key Achievements:
+                    </h5>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
+                      <li>
+                        Designed and implemented Salesforce solutions for
+                        multiple clients
+                      </li>
+                      <li>
+                        Developed custom components using Apex, LWC, and Aura
+                      </li>
+                      <li>
+                        Integrated Salesforce with external systems using REST
+                        APIs
+                      </li>
+                      <li>Optimized existing code to meet governor limits</li>
+                      <li>
+                        Participated in all phases of SDLC from requirements to
+                        deployment
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                
-                <!-- Achievements -->
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="section-title text-xl font-semibold">Achievements</h3>
-                    <div class="space-y-4">
-                        <div class="achievement-card bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg border-l-blue-500">
-                            <div class="flex items-center">
-                                <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-trophy text-blue-600 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">Agentforce Innovator</h4>
-                                    <div class="flex items-center text-sm text-gray-600 mt-1">
-                                        <i class="fas fa-trailhead text-blue-500 mr-2"></i>
-                                        <span>Trailhead</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="achievement-card bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg border-l-blue-500">
-                            <div class="flex items-center">
-                                <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-star text-blue-600 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">All Star Ranger</h4>
-                                    <div class="flex items-center text-sm text-gray-600 mt-1">
-                                        <i class="fas fa-trailhead text-blue-500 mr-2"></i>
-                                        <span>Trailblazer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Publications -->
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="section-title text-xl font-semibold">Publications</h3>
-                    <div class="space-y-4">
-                        <div class="publication-card bg-gradient-to-r from-purple-50 to-white p-4 rounded-lg border-l-purple-500">
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                    <i class="fab fa-udemy text-purple-600 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">VS Code Tips and Tricks</h4>
-                                    <div class="flex items-center text-sm text-gray-600 mt-1">
-                                        <i class="fas fa-check-circle check-icon mr-2"></i>
-                                        <span>Udemy</span>
-                                    </div>
-                                    <a href="https://www.udemy.com/course/mastering-visual-studio-code-2022-with-salesforce/?couponCode=ST7MT290425G3"
-                                       class="text-sm text-purple-600 hover:underline mt-2 inline-block">
-                                        <i class="fas fa-external-link-alt mr-1"></i> View Course
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="publication-card bg-gradient-to-r from-purple-50 to-white p-4 rounded-lg border-l-purple-500">
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-code text-purple-600 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">Dark Theme</h4>
-                                    <div class="flex items-center text-sm text-gray-600 mt-1">
-                                        <i class="fas fa-check-circle check-icon mr-2"></i>
-                                        <span>VS Code Extension</span>
-                                    </div>
-                                    <a href="https://marketplace.visualstudio.com/items?itemName=SalesforceHunt.salesforcehunt-dark"
-                                       class="text-sm text-purple-600 hover:underline mt-2 inline-block">
-                                        <i class="fas fa-external-link-alt mr-1"></i> View Extension
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="publication-card bg-gradient-to-r from-purple-50 to-white p-4 rounded-lg border-l-purple-500">
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-blog text-purple-600 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">Blog</h4>
-                                    <div class="flex items-center text-sm text-gray-600 mt-1">
-                                        <i class="fas fa-check-circle check-icon mr-2"></i>
-                                        <span>Website</span>
-                                    </div>
-                                    <a href="https://salesforcehunt.blogspot.com"
-                                       class="text-sm text-purple-600 hover:underline mt-2 inline-block">
-                                        <i class="fas fa-external-link-alt mr-1"></i> Visit Blog
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-            
-            <!-- Right Column -->
-            <div class="lg:col-span-2 space-y-8">
-                <!-- Experience -->
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="section-title text-xl font-semibold">Work Experience</h3>
-                    
-                    <!-- Dell Technologies -->
-                    <div class="flex items-start mt-6">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-laptop-code text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h4 class="font-bold text-lg">Technical Architect</h4>
-                                    <p class="text-blue-600 font-medium">Dell Technologies</p>
-                                </div>
-                                <div class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-                                    Jun 2022 - Present
-                                </div>
-                            </div>
-                            <div class="mt-4 space-y-4">
-                                <div>
-                                    <h5 class="font-semibold text-gray-800">Key Achievements:</h5>
-                                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
-                                        <li>Led the design and implementation of complex Salesforce solutions for enterprise clients</li>
-                                        <li>Automated processes using Lightning Flow, LWC, and Apex frameworks</li>
-                                        <li>Developed custom REST API frameworks for seamless integrations</li>
-                                        <li>Optimized Apex code and improved system performance</li>
-                                        <li>Mentored junior developers and conducted technical training sessions</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Perficient -->
-                    <div class="flex items-start mt-8">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-code text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h4 class="font-bold text-lg">Technical Consultant</h4>
-                                    <p class="text-blue-600 font-medium">Perficient India Pvt. Ltd.</p>
-                                </div>
-                                <div class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-                                    Dec 2020 - Apr 2022
-                                </div>
-                            </div>
-                            <div class="mt-4 space-y-4">
-                                <div>
-                                    <h5 class="font-semibold text-gray-800">Key Achievements:</h5>
-                                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
-                                        <li>Designed and implemented Salesforce solutions for multiple clients</li>
-                                        <li>Developed custom components using Apex, LWC, and Aura</li>
-                                        <li>Integrated Salesforce with external systems using REST APIs</li>
-                                        <li>Optimized existing code to meet governor limits</li>
-                                        <li>Participated in all phases of SDLC from requirements to deployment</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SmartData -->
-                    <div class="flex items-start mt-8">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-cogs text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h4 class="font-bold text-lg">Software Engineer</h4>
-                                    <p class="text-blue-600 font-medium">SmartData Enterprises (I) Ltd.</p>
-                                </div>
-                                <div class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-                                    Apr 2018 - Nov 2020
-                                </div>
-                            </div>
-                            <div class="mt-4 space-y-4">
-                                <div>
-                                    <h5 class="font-semibold text-gray-800">Key Achievements:</h5>
-                                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
-                                        <li>Developed Salesforce solutions for various industries</li>
-                                        <li>Implemented Web-to-Lead functionality and campaign management</li>
-                                        <li>Created custom objects, validation rules, and workflows</li>
-                                        <li>Migrated data from legacy systems to Salesforce</li>
-                                        <li>Developed reports and dashboards for business users</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Skyway Technocom -->
-                    <div class="flex items-start mt-8">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-user-graduate text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h4 class="font-bold text-lg">Software Engineer</h4>
-                                    <p class="text-blue-600 font-medium">Skyway Technocom Consultants Pvt. Ltd.</p>
-                                </div>
-                                <div class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-                                    Aug 2014 - Feb 2018
-                                </div>
-                            </div>
-                            <div class="mt-4 space-y-4">
-                                <div>
-                                    <h5 class="font-semibold text-gray-800">Key Achievements:</h5>
-                                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
-                                        <li>Started career in software development</li>
-                                        <li>Gained foundational knowledge in IT systems</li>
-                                        <li>Developed problem-solving and analytical skills</li>
-                                        <li>Worked on various IT projects building technical expertise</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+            <!-- SmartData -->
+            <div class="flex items-start mt-8">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-cogs text-blue-600 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg">Software Engineer</h4>
+                    <p class="text-blue-600 font-medium">
+                      SmartData Enterprises (I) Ltd.
+                    </p>
+                  </div>
+                  <div
+                    class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                    Apr 2018 - Nov 2020
+                  </div>
                 </div>
-                
-                <!-- Technical Expertise -->
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="section-title text-xl font-semibold">Technical Expertise</h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <div class="flex items-center mb-3">
-                                <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-robot text-blue-600"></i>
-                                </div>
-                                <h4 class="font-semibold text-gray-800">Process Automation</h4>
-                            </div>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
-                                <li>Automated processes using Lightning Flow, Workflow Rules, Approval Processes, LWC, and Apex</li>
-                                <li>Developed productivity tools that reduced manual effort by X%</li>
-                                <li>Implemented complex business logic through declarative tools</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="flex items-center mb-3">
-                                <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-project-diagram text-blue-600"></i>
-                                </div>
-                                <h4 class="font-semibold text-gray-800">Solution Design</h4>
-                            </div>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
-                                <li>Led requirements gathering and analysis</li>
-                                <li>Designed high-level solutions and conducted impact assessments</li>
-                                <li>Utilized AI technologies like OpenAI for innovative solutions</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="flex items-center mb-3">
-                                <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-users text-blue-600"></i>
-                                </div>
-                                <h4 class="font-semibold text-gray-800">Technical Leadership</h4>
-                            </div>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
-                                <li>Worked across Sales, Service and Experience Clouds</li>
-                                <li>Developed Custom REST API Framework for integrations</li>
-                                <li>Optimized Apex code and improved performance</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="flex items-center mb-3">
-                                <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-file-alt text-blue-600"></i>
-                                </div>
-                                <h4 class="font-semibold text-gray-800">Documentation & Training</h4>
-                            </div>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
-                                <li>Created comprehensive technical documentation</li>
-                                <li>Trained and mentored 20+ resources</li>
-                                <li>Developed knowledge transfer materials</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="mt-4 space-y-4">
+                  <div>
+                    <h5 class="font-semibold text-gray-800">
+                      Key Achievements:
+                    </h5>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
+                      <li>
+                        Developed Salesforce solutions for various industries
+                      </li>
+                      <li>
+                        Implemented Web-to-Lead functionality and campaign
+                        management
+                      </li>
+                      <li>
+                        Created custom objects, validation rules, and workflows
+                      </li>
+                      <li>Migrated data from legacy systems to Salesforce</li>
+                      <li>
+                        Developed reports and dashboards for business users
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
             </div>
+
+            <!-- Skyway Technocom -->
+            <div class="flex items-start mt-8">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fas fa-user-graduate text-blue-600 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg">Software Engineer</h4>
+                    <p class="text-blue-600 font-medium">
+                      Skyway Technocom Consultants Pvt. Ltd.
+                    </p>
+                  </div>
+                  <div
+                    class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                    Aug 2014 - Feb 2018
+                  </div>
+                </div>
+                <div class="mt-4 space-y-4">
+                  <div>
+                    <h5 class="font-semibold text-gray-800">
+                      Key Achievements:
+                    </h5>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-2">
+                      <li>Started career in software development</li>
+                      <li>Gained foundational knowledge in IT systems</li>
+                      <li>Developed problem-solving and analytical skills</li>
+                      <li>
+                        Worked on various IT projects building technical
+                        expertise
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Expertise -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="section-title text-xl font-semibold">
+              Technical Expertise
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <div class="flex items-center mb-3">
+                  <div class="bg-blue-100 p-2 rounded-full mr-3">
+                    <i class="fas fa-robot text-blue-600"></i>
+                  </div>
+                  <h4 class="font-semibold text-gray-800">
+                    Process Automation
+                  </h4>
+                </div>
+                <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                  <li>
+                    Automated processes using Lightning Flow, Workflow Rules,
+                    Approval Processes, LWC, and Apex
+                  </li>
+                  <li>
+                    Developed productivity tools that reduced manual effort by
+                    60%
+                  </li>
+                  <li>
+                    Implemented complex business logic through declarative tools
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="flex items-center mb-3">
+                  <div class="bg-blue-100 p-2 rounded-full mr-3">
+                    <i class="fas fa-project-diagram text-blue-600"></i>
+                  </div>
+                  <h4 class="font-semibold text-gray-800">Solution Design</h4>
+                </div>
+                <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                  <li>Led requirements gathering and analysis</li>
+                  <li>
+                    Designed high-level solutions and conducted impact
+                    assessments
+                  </li>
+                  <li>
+                    Utilized AI technologies like OpenAI for innovative
+                    solutions
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="flex items-center mb-3">
+                  <div class="bg-blue-100 p-2 rounded-full mr-3">
+                    <i class="fas fa-users text-blue-600"></i>
+                  </div>
+                  <h4 class="font-semibold text-gray-800">
+                    Technical Leadership
+                  </h4>
+                </div>
+                <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                  <li>Worked across Sales, Service and Experience Clouds</li>
+                  <li>Developed Custom REST API Framework for integrations</li>
+                  <li>Optimized Apex code and improved performance</li>
+                </ul>
+              </div>
+              <div>
+                <div class="flex items-center mb-3">
+                  <div class="bg-blue-100 p-2 rounded-full mr-3">
+                    <i class="fas fa-file-alt text-blue-600"></i>
+                  </div>
+                  <h4 class="font-semibold text-gray-800">
+                    Documentation & Training
+                  </h4>
+                </div>
+                <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                  <li>Created comprehensive technical documentation</li>
+                  <li>Trained and mentored 20+ resources</li>
+                  <li>Developed knowledge transfer materials</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
