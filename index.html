@@ -124,6 +124,39 @@
         z-index: 1;
       }
 
+      /* Agentforce Badge */
+      .agentforce-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 2;
+      }
+
+      .badge-image {
+        width: 180px;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      }
+
+      .badge-image:hover {
+        transform: scale(1.05);
+      }
+
+      /* Responsive badge */
+      @media (max-width: 768px) {
+        .agentforce-badge {
+          top: 0.5rem;
+          right: 0.5rem;
+        }
+        
+        .badge-image {
+          width: 120px;
+        }
+      }
+
       .profile-section {
         display: flex;
         align-items: center;
@@ -754,6 +787,15 @@
               <i class="fas fa-blog"></i>
             </a>
           </div>
+        </div>
+        
+        <!-- Agentforce Level 2 Badge -->
+        <div class="agentforce-badge">
+          <img
+            src="Assets/images/agentforce-level-2.png"
+            alt="Agentforce Level 2 Badge"
+            class="badge-image" />
+        </div>
         </div>
       </div>
     </header>
