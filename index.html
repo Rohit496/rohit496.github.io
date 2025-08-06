@@ -205,6 +205,16 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         transition: all 0.3s ease;
         font-size: 1.2rem;
+        position: relative;
+        /* Ensure no unintended pseudo-elements */
+        overflow: visible;
+      }
+
+      /* Remove any unintended pseudo-elements */
+      .social-link::before,
+      .social-link::after {
+        display: none;
+        content: none;
       }
 
       .social-link:hover {
@@ -234,6 +244,18 @@
       .social-link img[src*="linkedein.svg"] {
         width: 18px;
         height: 18px;
+      }
+
+      /* Ensure YouTube icon has no artifacts */
+      .social-link .fab.fa-youtube {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Remove any potential artifacts from Font Awesome icons */
+      .social-link i {
+        position: relative;
+        z-index: 1;
       }
 
       /* Cards */
@@ -1168,7 +1190,7 @@
         easing: "ease-out",
         once: true,
         offset: 50,
-        disable: 'mobile' // Disable on mobile to prevent flickering
+        disable: "mobile", // Disable on mobile to prevent flickering
       });
 
       // Smooth scroll for anchor links
@@ -1190,8 +1212,8 @@
         // Cards are already visible, no need for loading animations
         const cards = document.querySelectorAll(".card");
         cards.forEach((card) => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
         });
       });
 
