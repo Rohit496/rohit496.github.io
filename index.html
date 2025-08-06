@@ -59,6 +59,9 @@
         color: var(--text-primary);
         line-height: 1.6;
         min-height: 100vh;
+        /* Prevent content flash */
+        opacity: 1;
+        visibility: visible;
       }
 
       /* Smooth scrolling */
@@ -575,18 +578,11 @@
         }
       }
 
-      /* Loading animation */
-      .loading {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.6s ease forwards;
-      }
-
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      /* Optimized loading - no flickering */
+      .card {
+        opacity: 1;
+        transform: translateY(0);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       /* Hover effects */
@@ -603,29 +599,6 @@
       .publication-link:focus {
         outline: 2px solid var(--primary-color);
         outline-offset: 2px;
-      }
-
-      /* Loading animation */
-      .loading {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.6s ease forwards;
-      }
-
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Hover effects */
-      .hover-lift {
-        transition: transform 0.3s ease;
-      }
-
-      .hover-lift:hover {
-        transform: translateY(-5px);
       }
 
       /* Enhanced card shadows */
@@ -1189,12 +1162,13 @@
     </footer>
 
     <script>
-      // Initialize AOS animations
+      // Initialize AOS animations with optimized settings
       AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
+        duration: 600,
+        easing: "ease-out",
         once: true,
-        offset: 100,
+        offset: 50,
+        disable: 'mobile' // Disable on mobile to prevent flickering
       });
 
       // Smooth scroll for anchor links
@@ -1211,12 +1185,13 @@
         });
       });
 
-      // Add loading animation to cards
+      // Optimized loading - no flickering animations
       document.addEventListener("DOMContentLoaded", function () {
+        // Cards are already visible, no need for loading animations
         const cards = document.querySelectorAll(".card");
-        cards.forEach((card, index) => {
-          card.style.animationDelay = `${index * 100}ms`;
-          card.classList.add("loading");
+        cards.forEach((card) => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
         });
       });
 
