@@ -4,9 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rohit Kumar - Salesforce Technical Architect</title>
-    <link rel="icon" type="image/jpeg" href="Assets/images/me.jpg" />
-    <link rel="shortcut icon" type="image/jpeg" href="Assets/images/me.jpg" />
-    <link rel="apple-touch-icon" href="Assets/images/me.jpg" />
     <meta
       name="description"
       content="Salesforce Technical Architect with 10+ years of IT experience specializing in Salesforce CRM platform, system architecture, and enterprise solutions." />
@@ -62,9 +59,6 @@
         color: var(--text-primary);
         line-height: 1.6;
         min-height: 100vh;
-        /* Prevent content flash */
-        opacity: 1;
-        visibility: visible;
       }
 
       /* Smooth scrolling */
@@ -118,8 +112,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        /* Removed the dot pattern that was causing visual artifacts */
-        background: none;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
       }
 
       .header-content {
@@ -216,7 +210,6 @@
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
         transition: all 0.3s ease;
-        color: white;
       }
 
       .contact-item:hover {
@@ -242,57 +235,11 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         transition: all 0.3s ease;
         font-size: 1.2rem;
-        position: relative;
-        /* Ensure no unintended pseudo-elements */
-        overflow: visible;
-      }
-
-      /* Remove any unintended pseudo-elements */
-      .social-link::before,
-      .social-link::after {
-        display: none;
-        content: none;
       }
 
       .social-link:hover {
         background: rgba(255, 255, 255, 0.2);
         transform: translateY(-3px) scale(1.1);
-      }
-
-      .social-icon {
-        width: 20px;
-        height: 20px;
-        filter: brightness(0) invert(1);
-        transition: all 0.3s ease;
-      }
-
-      .social-link:hover .social-icon {
-        transform: scale(1.1);
-      }
-
-      /* Special styling for Trailhead icon */
-      .social-link img[src*="Trailhead_old.svg"] {
-        width: 18px;
-        height: 18px;
-        filter: brightness(0) invert(1) saturate(1.2);
-      }
-
-      /* Special styling for LinkedIn icon */
-      .social-link img[src*="linkedein.svg"] {
-        width: 18px;
-        height: 18px;
-      }
-
-      /* Ensure YouTube icon has no artifacts */
-      .social-link .fab.fa-youtube {
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Remove any potential artifacts from Font Awesome icons */
-      .social-link i {
-        position: relative;
-        z-index: 1;
       }
 
       /* Cards */
@@ -637,58 +584,11 @@
         }
       }
 
-      /* Optimized loading - no flickering */
-      .card {
-        opacity: 1;
-        transform: translateY(0);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      /* Hover effects */
-      .hover-lift {
-        transition: transform 0.3s ease;
-      }
-
-      .hover-lift:hover {
-        transform: translateY(-5px);
-      }
-
       /* Focus states for accessibility */
       .social-link:focus,
       .publication-link:focus {
         outline: 2px solid var(--primary-color);
         outline-offset: 2px;
-      }
-
-      /* Enhanced card shadows */
-      .card {
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      }
-
-      .card:hover {
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      }
-
-      /* Enhanced typography */
-      .profile-info h1 {
-        background: linear-gradient(45deg, #ffffff, #e0e7ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Enhanced contact items */
-      .contact-item {
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .contact-item:hover {
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
       }
 
       /* Print styles */
@@ -721,24 +621,22 @@
             <div class="profile-info">
               <h1>Rohit Kumar</h1>
               <h2>Salesforce Technical Architect</h2>
-              <p class="text-white">
-                10+ years of IT experience | 6+ years in Salesforce
-              </p>
+              <p>10+ years of IT experience | 6+ years in Salesforce</p>
             </div>
           </div>
 
           <div class="contact-info">
             <div class="contact-item">
-              <i class="fas fa-envelope text-white"></i>
-              <span class="text-white">rohit007salesforce@gmail.com</span>
+              <i class="fas fa-envelope"></i>
+              <span>rohit007salesforce@gmail.com</span>
             </div>
             <div class="contact-item">
-              <i class="fas fa-phone text-white"></i>
-              <span class="text-white">+60 1121764063</span>
+              <i class="fas fa-phone"></i>
+              <span>+60 1121764063</span>
             </div>
             <div class="contact-item">
-              <i class="fas fa-map-marker-alt text-white"></i>
-              <span class="text-white">Cyberjaya, Selangor, Malaysia</span>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Cyberjaya, Selangor, Malaysia</span>
             </div>
           </div>
 
@@ -747,49 +645,21 @@
               href="https://www.linkedin.com/in/rohit-kumar-81916b190/"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-link"
-              title="LinkedIn">
-              <img
-                src="Assets/icons/linkedein.svg"
-                alt="LinkedIn"
-                class="social-icon" />
-            </a>
-            <a
-              href="https://x.com/RohitGu83309245"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              title="Twitter/X">
-              <img
-                src="Assets/icons/twitter.svg"
-                alt="Twitter/X"
-                class="social-icon" />
-            </a>
-            <a
-              href="https://www.youtube.com/@SalesforceHunt"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              title="YouTube">
-              <i class="fab fa-youtube"></i>
+              class="social-link">
+              <i class="fab fa-linkedin-in"></i>
             </a>
             <a
               href="https://www.salesforce.com/trailblazer/cloudyrohit"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-link"
-              title="Trailhead">
-              <img
-                src="Assets/icons/Trailhead_old.svg"
-                alt="Trailhead"
-                class="social-icon" />
+              class="social-link">
+              <i class="fas fa-trailhead"></i>
             </a>
             <a
               href="https://salesforcehunt.blogspot.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-link"
-              title="Blog">
+              class="social-link">
               <i class="fas fa-blog"></i>
             </a>
           </div>
@@ -1217,13 +1087,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-16 border-t border-gray-700">
+    <footer class="bg-gray-900 text-white py-8 mt-16">
       <div class="container text-center">
-        <p class="text-gray-300">
-          © 2025 Rohit Kumar. All rights reserved. |
+        <p class="text-gray-400">
+          © 2024 Rohit Kumar. All rights reserved. |
           <a
             href="mailto:rohit007salesforce@gmail.com"
-            class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
+            class="text-blue-400 hover:text-blue-300">
             Contact
           </a>
         </p>
@@ -1231,13 +1101,12 @@
     </footer>
 
     <script>
-      // Initialize AOS animations with optimized settings
+      // Initialize AOS animations
       AOS.init({
-        duration: 600,
-        easing: "ease-out",
+        duration: 800,
+        easing: "ease-in-out",
         once: true,
-        offset: 50,
-        disable: "mobile", // Disable on mobile to prevent flickering
+        offset: 100,
       });
 
       // Smooth scroll for anchor links
@@ -1254,13 +1123,12 @@
         });
       });
 
-      // Optimized loading - no flickering animations
+      // Add loading animation to cards
       document.addEventListener("DOMContentLoaded", function () {
-        // Cards are already visible, no need for loading animations
         const cards = document.querySelectorAll(".card");
-        cards.forEach((card) => {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${index * 100}ms`;
+          card.classList.add("loading");
         });
       });
 
@@ -1282,37 +1150,6 @@
       // Observe all cards
       document.querySelectorAll(".card").forEach((card) => {
         observer.observe(card);
-      });
-
-      // Add smooth hover effects to all interactive elements
-      document
-        .querySelectorAll(
-          ".card, .achievement-card, .publication-card, .experience-item, .expertise-item"
-        )
-        .forEach((element) => {
-          element.addEventListener("mouseenter", function () {
-            this.style.transform = "translateY(-5px)";
-          });
-
-          element.addEventListener("mouseleave", function () {
-            this.style.transform = "translateY(0)";
-          });
-        });
-
-      // Add loading state management
-      window.addEventListener("load", function () {
-        document.body.classList.add("loaded");
-      });
-
-      // Add keyboard navigation support
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Tab") {
-          document.body.classList.add("keyboard-navigation");
-        }
-      });
-
-      document.addEventListener("mousedown", function () {
-        document.body.classList.remove("keyboard-navigation");
       });
     </script>
   </body>
