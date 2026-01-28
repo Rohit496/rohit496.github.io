@@ -3,16 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rohit Kumar - Salesforce Technical Architect</title>
+    <title>Rohit Kumar - Salesforce Sr. Software Engineer</title>
+    <meta
+      name="description"
+      content="Salesforce Senior Software Engineer with over 10 years of IT experience, including 6+ years of hands-on expertise in the Salesforce CRM ecosystem." />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="Assets/images/me.jpg" />
     <link rel="shortcut icon" type="image/jpeg" href="Assets/images/me.jpg" />
     <link rel="apple-touch-icon" href="Assets/images/me.jpg" />
-    <meta
-      name="description"
-      content="Salesforce Technical Architect with 10+ years of IT experience specializing in Salesforce CRM platform, system architecture, and enterprise solutions." />
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Font Awesome -->
     <link
@@ -26,27 +25,35 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet" />
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <style>
       :root {
-        --primary-color: #2563eb;
-        --primary-dark: #1d4ed8;
-        --secondary-color: #7c3aed;
-        --accent-color: #06b6d4;
-        --text-primary: #1f2937;
-        --text-secondary: #6b7280;
-        --text-light: #9ca3af;
-        --bg-primary: #ffffff;
-        --bg-secondary: #f8fafc;
-        --bg-accent: #eff6ff;
-        --border-color: #e5e7eb;
-        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --primary: #0176d3;
+        --primary-dark: #014486;
+        --primary-light: #e5f2ff;
+        --secondary: #5867e8;
+        --accent: #04844b;
+        --accent-light: #e3f3eb;
+        --orange: #ff5d2d;
+        --purple: #9050e9;
+        --text-dark: #181818;
+        --text-primary: #2e2e2e;
+        --text-secondary: #555555;
+        --text-muted: #707070;
+        --bg-white: #ffffff;
+        --bg-light: #f8f9fa;
+        --bg-gray: #f1f3f5;
+        --border: #dee2e6;
+        --sidebar-dark: #0d1b2a;
+        --sidebar-mid: #1b263b;
+        --gradient-primary: linear-gradient(135deg, #0176d3 0%, #5867e8 100%);
+        --gradient-accent: linear-gradient(135deg, #ff5d2d 0%, #ff8f6b 100%);
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+        --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+        --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+        --radius: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
       }
 
       * {
@@ -55,1265 +62,1363 @@
         box-sizing: border-box;
       }
 
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        color: var(--text-primary);
-        line-height: 1.6;
-        min-height: 100vh;
-        /* Prevent content flash */
-        opacity: 1;
-        visibility: visible;
-      }
-
-      /* Smooth scrolling */
       html {
         scroll-behavior: smooth;
       }
 
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--sidebar-mid);
+        color: var(--text-primary);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
       }
 
-      ::-webkit-scrollbar-track {
-        background: var(--bg-secondary);
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: var(--primary-color);
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(--primary-dark);
-      }
-
-      /* Container */
-      .container {
-        max-width: 1200px;
+      /* Main Container - No separate scrolling */
+      .resume {
+        max-width: 1300px;
         margin: 0 auto;
-        padding: 0 1rem;
+        background: var(--bg-white);
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        box-shadow: var(--shadow-lg);
       }
 
-      /* Header */
-      .header {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--secondary-color) 100%
-        );
+      /* Sidebar - No sticky, scrolls with page */
+      .sidebar {
+        background: var(--sidebar-dark);
         color: white;
-        padding: 3rem 0;
-        margin-bottom: 3rem;
+        padding: 0;
+      }
+
+      /* Profile Section */
+      .profile-section {
+        text-align: center;
+        padding: 40px 28px 32px;
+        background: linear-gradient(180deg, rgba(1,118,211,0.2) 0%, transparent 100%);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .profile-photo-container {
         position: relative;
-        overflow: hidden;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 24px;
       }
 
-      .header::before {
-        content: "";
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid rgba(255,255,255,0.15);
+        object-fit: cover;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      }
+
+      .status-badge {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* Removed the dot pattern that was causing visual artifacts */
-        background: none;
+        bottom: 10px;
+        right: 10px;
+        width: 28px;
+        height: 28px;
+        background: #22c55e;
+        border: 4px solid var(--sidebar-dark);
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(34,197,94,0.5);
       }
 
-      .header-content {
-        position: relative;
-        z-index: 1;
+      .profile-name {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
       }
 
-      /* Agentforce Badge */
-      .agentforce-badge {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        z-index: 2;
+      .profile-title {
+        font-size: 0.9rem;
+        color: #7ec8f8;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .profile-summary {
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+
+      /* Download Button */
+      .btn-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 32px;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 16px rgba(1,118,211,0.4);
+      }
+
+      .btn-download:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(1,118,211,0.5);
+      }
+
+      /* Badge Display */
+      .badge-display {
+        padding: 24px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
       }
 
       .badge-image {
         width: 180px;
         height: auto;
-        border-radius: 12px;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
         transition: transform 0.3s ease;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
       }
 
       .badge-image:hover {
-        transform: scale(1.05);
+        transform: scale(1.08);
       }
 
-      /* Responsive badge */
-      @media (max-width: 768px) {
-        .agentforce-badge {
-          top: 0.5rem;
-          right: 0.5rem;
-        }
-
-        .badge-image {
-          width: 120px;
-        }
+      /* Sidebar Sections */
+      .sidebar-section {
+        padding: 24px 28px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
       }
 
-      .profile-section {
+      .section-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #7ec8f8;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 18px;
         display: flex;
         align-items: center;
-        gap: 2rem;
-        margin-bottom: 2rem;
+        gap: 8px;
       }
 
-      .profile-image {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        object-fit: cover;
-        box-shadow: var(--shadow-lg);
+      .section-title::before {
+        content: "";
+        width: 3px;
+        height: 14px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
       }
 
-      .profile-info h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(45deg, #ffffff, #e0e7ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .profile-info h2 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: #e0e7ff;
-      }
-
-      .profile-info p {
-        font-size: 1.1rem;
-        color: #cbd5e1;
-        font-weight: 500;
-      }
-
-      .contact-info {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        align-items: center;
+      /* Contact */
+      .contact-list {
+        list-style: none;
       }
 
       .contact-item {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1rem;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50px;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease;
-        color: white;
+        gap: 14px;
+        padding: 12px 0;
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.85);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        transition: all 0.2s;
+      }
+
+      .contact-item:last-child {
+        border-bottom: none;
       }
 
       .contact-item:hover {
-        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding-left: 6px;
+      }
+
+      .contact-item i {
+        width: 20px;
+        color: var(--primary);
+        font-size: 0.9rem;
+      }
+
+      .contact-item a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .contact-item a:hover {
+        color: #7ec8f8;
+      }
+
+      /* Skills */
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-tag {
+        padding: 8px 14px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: rgba(255,255,255,0.9);
+        transition: all 0.2s;
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .skill-tag:hover {
+        background: rgba(1,118,211,0.3);
+        border-color: rgba(1,118,211,0.5);
         transform: translateY(-2px);
       }
 
-      .social-links {
+      /* Achievements */
+      .achievement-item {
         display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
       }
 
-      .social-link {
+      .achievement-item:last-child {
+        border-bottom: none;
+      }
+
+      .achievement-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease;
-        font-size: 1.2rem;
-        position: relative;
-        /* Ensure no unintended pseudo-elements */
-        overflow: visible;
+        font-size: 1.1rem;
+        flex-shrink: 0;
       }
 
-      /* Remove any unintended pseudo-elements */
-      .social-link::before,
-      .social-link::after {
-        display: none;
-        content: none;
+      .achievement-icon.gold { background: linear-gradient(135deg, #f7b733, #fc4a1a); box-shadow: 0 4px 12px rgba(247,183,51,0.3); }
+      .achievement-icon.blue { background: var(--gradient-primary); box-shadow: 0 4px 12px rgba(1,118,211,0.3); }
+      .achievement-icon.green { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 4px 12px rgba(17,153,142,0.3); }
+
+      .achievement-text h4 {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 3px;
+      }
+
+      .achievement-text span {
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.6);
+      }
+
+      /* Publications */
+      .pub-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .pub-item:last-child {
+        border-bottom: none;
+      }
+
+      .pub-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .pub-icon.blog { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+      .pub-icon.youtube { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+      .pub-icon.code { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+      .pub-icon.course { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+
+      .pub-info h4 {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 3px;
+      }
+
+      .pub-info a {
+        font-size: 0.72rem;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .pub-info a:hover {
+        color: #7ec8f8;
+        text-decoration: underline;
+      }
+
+      /* Certifications Grid - Bigger images */
+      .certs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .cert-item {
+        background: rgba(255,255,255,0.06);
+        border-radius: 10px;
+        padding: 12px 8px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .cert-item:hover {
+        background: rgba(255,255,255,0.12);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      }
+
+      .cert-item img {
+        width: 100%;
+        height: auto;
+        max-width: 80px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      /* Social Links */
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.7);
+        border-radius: 50%;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255,255,255,0.15);
+        text-decoration: none;
       }
 
       .social-link:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-3px) scale(1.1);
+        color: white;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       }
 
-      .social-icon {
-        width: 20px;
-        height: 20px;
-        filter: brightness(0) invert(1);
+      .social-link.linkedin:hover { background: #0077b5; border-color: #0077b5; }
+      .social-link.twitter:hover { background: #000; border-color: #000; }
+      .social-link.youtube:hover { background: #ff0000; border-color: #ff0000; }
+      .social-link.trailhead:hover { background: #00a1e0; border-color: #00a1e0; }
+      .social-link.blog:hover { background: #f57c00; border-color: #f57c00; }
+      .social-link.medium:hover { background: #000; border-color: #000; }
+      .social-link.topmate:hover { background: #4F46E5; border-color: #4F46E5; }
+      .social-link.github:hover { background: #333; border-color: #333; }
+
+      /* Main Content - Compact */
+      .main-content {
+        padding: 28px 40px;
+        background: var(--bg-white);
+      }
+
+      .main-section {
+        margin-bottom: 20px;
+      }
+
+      .main-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .main-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .main-heading::before {
+        content: "";
+        width: 4px;
+        height: 26px;
+        background: var(--gradient-primary);
+        border-radius: 3px;
+      }
+
+      /* Experience Card */
+      .exp-card {
+        display: flex;
+        gap: 20px;
+        padding: 22px 24px;
+        background: var(--bg-white);
+        border: 2px solid var(--bg-gray);
+        border-radius: var(--radius-lg);
+        margin-bottom: 16px;
         transition: all 0.3s ease;
-      }
-
-      .social-link:hover .social-icon {
-        transform: scale(1.1);
-      }
-
-      /* Special styling for Trailhead icon */
-      .social-link img[src*="Trailhead_old.svg"] {
-        width: 18px;
-        height: 18px;
-        filter: brightness(0) invert(1) saturate(1.2);
-      }
-
-      /* Special styling for LinkedIn icon */
-      .social-link img[src*="linkedein.svg"] {
-        width: 18px;
-        height: 18px;
-      }
-
-      /* Ensure YouTube icon has no artifacts */
-      .social-link .fab.fa-youtube {
         position: relative;
-        z-index: 1;
       }
 
-      /* Remove any potential artifacts from Font Awesome icons */
-      .social-link i {
-        position: relative;
-        z-index: 1;
+      .exp-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background: var(--gradient-primary);
+        border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
       }
 
-      /* Cards */
-      .card {
-        background: var(--bg-primary);
-        border-radius: 16px;
+      .exp-card:hover {
+        border-color: var(--primary);
         box-shadow: var(--shadow-md);
-        padding: 2rem;
-        border: 1px solid var(--border-color);
+      }
+
+      .exp-card:hover::before {
+        opacity: 1;
+      }
+
+      .exp-logo {
+        width: 52px;
+        height: 52px;
+        background: var(--bg-light);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        overflow: hidden;
+        border: 2px solid var(--bg-gray);
+      }
+
+      .exp-logo img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+      }
+
+      .exp-logo i {
+        font-size: 1.3rem;
+        color: var(--primary);
+      }
+
+      .exp-content {
+        flex: 1;
+      }
+
+      .exp-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 4px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .exp-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+
+      .exp-badge {
+        padding: 4px 12px;
+        background: var(--primary-light);
+        color: var(--primary);
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+
+      .exp-company {
+        font-size: 0.9rem;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .exp-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .exp-meta span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .exp-meta i {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .exp-desc {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .exp-achievements {
+        list-style: none;
+      }
+
+      .exp-achievements li {
+        position: relative;
+        padding-left: 18px;
+        margin-bottom: 6px;
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      .exp-achievements li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+      }
+
+      /* Projects Grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .project-card {
+        background: var(--bg-white);
+        border: 2px solid var(--bg-gray);
+        border-radius: var(--radius-lg);
+        padding: 20px;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
       }
 
-      .card::before {
+      .project-card::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
       }
 
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-xl);
+      .project-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-6px);
       }
 
-      /* Section titles */
-      .section-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
+      .project-card:hover::before {
+        transform: scaleX(1);
       }
 
-      .section-title::before {
-        content: "";
-        width: 4px;
-        height: 24px;
-        background: linear-gradient(
-          180deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
-        border-radius: 2px;
-      }
-
-      /* Experience items */
-      .experience-item {
-        padding: 1.5rem;
-        border-left: 3px solid var(--primary-color);
-        margin-bottom: 2rem;
-        background: linear-gradient(135deg, var(--bg-accent) 0%, white 100%);
-        border-radius: 0 12px 12px 0;
-        transition: all 0.3s ease;
-      }
-
-      .experience-item:hover {
-        transform: translateX(5px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .experience-header {
+      .project-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 1rem;
+        margin-bottom: 8px;
+        gap: 10px;
       }
 
-      .experience-title {
-        font-size: 1.25rem;
+      .project-title {
+        font-size: 0.95rem;
         font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 0.25rem;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
-      .experience-company {
-        color: var(--primary-color);
-        font-weight: 600;
-        font-size: 1.1rem;
-      }
-
-      .experience-date {
-        background: var(--primary-color);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.875rem;
-        font-weight: 600;
-      }
-
-      .experience-achievements {
-        list-style: none;
-      }
-
-      .experience-achievements li {
-        position: relative;
-        padding-left: 1.5rem;
-        margin-bottom: 0.75rem;
-        color: var(--text-secondary);
-      }
-
-      .experience-achievements li::before {
-        content: "▸";
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-        font-weight: bold;
-      }
-
-      /* Achievement cards */
-      .achievement-card {
-        background: linear-gradient(135deg, var(--bg-accent) 0%, white 100%);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .achievement-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(
-          180deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
-      }
-
-      .achievement-card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .achievement-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(
-          135deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
-        border-radius: 50%;
+      .project-title i {
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        background: var(--primary-light);
+        color: var(--primary);
+        border-radius: var(--radius);
+        font-size: 0.85rem;
       }
 
-      /* Publication cards */
-      .publication-card {
-        background: linear-gradient(135deg, #faf5ff 0%, white 100%);
-        border: 1px solid #e9d5ff;
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .publication-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(
-          180deg,
-          var(--secondary-color),
-          var(--accent-color)
-        );
-      }
-
-      .publication-card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .publication-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--secondary-color);
-        font-weight: 600;
-        text-decoration: none;
-        margin-top: 0.75rem;
-        padding: 0.5rem 1rem;
-        background: rgba(124, 58, 237, 0.1);
+      .project-industry {
+        padding: 4px 10px;
+        background: var(--accent-light);
+        color: var(--accent);
         border-radius: 20px;
-        transition: all 0.3s ease;
+        font-size: 0.68rem;
+        font-weight: 600;
+        white-space: nowrap;
       }
 
-      .publication-link:hover {
-        background: rgba(124, 58, 237, 0.2);
-        transform: translateX(5px);
-      }
-
-      /* Education items */
-      .education-item {
-        padding: 1rem;
-        border-left: 3px solid var(--primary-color);
-        margin-bottom: 1rem;
-        background: var(--bg-secondary);
-        border-radius: 0 8px 8px 0;
-        transition: all 0.3s ease;
-      }
-
-      .education-item:hover {
-        background: var(--bg-accent);
-        transform: translateX(3px);
-      }
-
-      .education-school {
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 0.25rem;
-      }
-
-      .education-degree {
-        color: var(--text-secondary);
-        margin-bottom: 0.5rem;
-      }
-
-      .education-details {
+      .project-meta {
         display: flex;
-        gap: 1rem;
-        font-size: 0.875rem;
-        color: var(--text-light);
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 8px;
+        font-size: 0.72rem;
+        color: var(--text-muted);
       }
 
-      /* Technical expertise */
-      .expertise-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .expertise-item {
-        background: var(--bg-secondary);
-        border-radius: 12px;
-        padding: 1.5rem;
-        transition: all 0.3s ease;
-        border: 1px solid var(--border-color);
-      }
-
-      .expertise-item:hover {
-        background: var(--bg-accent);
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .expertise-header {
+      .project-meta span {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
+        gap: 5px;
       }
 
-      .expertise-icon {
+      .project-desc {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .project-highlights h5 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .project-highlights ul {
+        list-style: none;
+        margin-bottom: 10px;
+      }
+
+      .project-highlights li {
+        position: relative;
+        padding-left: 16px;
+        margin-bottom: 4px;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        line-height: 1.4;
+      }
+
+      .project-highlights li::before {
+        content: "\f00c";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 0.65rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tech-tag {
+        padding: 4px 10px;
+        background: var(--bg-gray);
+        color: var(--text-secondary);
+        border-radius: 6px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+
+      .tech-tag:hover {
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+
+      /* Education Card - Side by Side */
+      .edu-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        padding: 20px 24px;
+        background: var(--bg-white);
+        border: 2px solid var(--bg-gray);
+        border-radius: var(--radius-lg);
+        transition: all 0.3s ease;
+      }
+
+      .edu-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow);
+      }
+
+      .edu-item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .edu-logo {
+        width: 48px;
+        height: 48px;
+        background: var(--bg-light);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        overflow: hidden;
+        border: 2px solid var(--bg-gray);
+      }
+
+      .edu-logo img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+      }
+
+      .edu-school {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 2px;
+      }
+
+      .edu-degree {
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+      }
+
+      .edu-meta {
+        display: flex;
+        gap: 12px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .edu-meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      /* Languages - Compact */
+      .languages-container {
+        display: flex;
+        gap: 16px;
+      }
+
+      .lang-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 20px;
+        background: var(--bg-white);
+        border: 2px solid var(--bg-gray);
+        border-radius: var(--radius-lg);
+        flex: 1;
+        transition: all 0.3s ease;
+      }
+
+      .lang-item:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow);
+      }
+
+      .lang-icon {
         width: 40px;
         height: 40px;
-        background: var(--primary-color);
+        background: var(--primary-light);
+        color: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
         font-size: 1rem;
       }
 
-      .expertise-title {
+      .lang-name {
+        font-size: 0.92rem;
         font-weight: 700;
-        color: var(--text-primary);
+        color: var(--text-dark);
+        margin-bottom: 1px;
       }
 
-      .expertise-list {
-        list-style: none;
+      .lang-level {
+        font-size: 0.78rem;
+        color: var(--text-muted);
       }
 
-      .expertise-list li {
-        position: relative;
-        padding-left: 1.25rem;
-        margin-bottom: 0.5rem;
-        color: var(--text-secondary);
-      }
 
-      .expertise-list li::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-        font-weight: bold;
-      }
-
-      /* Responsive design */
-      @media (max-width: 768px) {
-        .profile-section {
-          flex-direction: column;
-          text-align: center;
+      /* Responsive */
+      @media (max-width: 1100px) {
+        .resume {
+          grid-template-columns: 1fr;
         }
 
-        .profile-image {
-          width: 100px;
-          height: 100px;
+        .main-content {
+          padding: 40px 32px;
         }
 
-        .profile-info h1 {
-          font-size: 2rem;
-        }
-
-        .contact-info {
-          justify-content: center;
-        }
-
-        .experience-header {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .expertise-grid {
+        .projects-grid {
           grid-template-columns: 1fr;
         }
       }
 
-      /* Optimized loading - no flickering */
-      .card {
-        opacity: 1;
-        transform: translateY(0);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      @media (max-width: 640px) {
+        .main-content {
+          padding: 28px 20px;
+        }
+
+        .exp-card {
+          flex-direction: column;
+          padding: 24px;
+        }
+
+        .exp-logo {
+          width: 56px;
+          height: 56px;
+        }
+
+        .exp-header {
+          flex-direction: column;
+        }
+
+        .project-card {
+          padding: 22px;
+        }
+
+        .project-header {
+          flex-direction: column;
+        }
+
+        .languages-container {
+          flex-direction: column;
+        }
+
+        .certs-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .edu-card {
+          grid-template-columns: 1fr;
+        }
       }
 
-      /* Hover effects */
-      .hover-lift {
-        transition: transform 0.3s ease;
-      }
-
-      .hover-lift:hover {
-        transform: translateY(-5px);
-      }
-
-      /* Focus states for accessibility */
-      .social-link:focus,
-      .publication-link:focus {
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-      }
-
-      /* Enhanced card shadows */
-      .card {
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      }
-
-      .card:hover {
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      }
-
-      /* Enhanced typography */
-      .profile-info h1 {
-        background: linear-gradient(45deg, #ffffff, #e0e7ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Enhanced contact items */
-      .contact-item {
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .contact-item:hover {
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
-
-      /* Print styles */
+      /* Print */
       @media print {
-        body {
-          background: white;
+        .resume {
+          grid-template-columns: 280px 1fr;
         }
 
-        .header {
-          background: var(--primary-color);
-        }
-
-        .card {
-          box-shadow: none;
-          border: 1px solid var(--border-color);
+        .btn-download {
+          display: none;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Header Section -->
-    <header class="header">
-      <div class="container">
-        <div class="header-content">
-          <div class="profile-section">
-            <img
-              src="Assets/images/me.jpg"
-              alt="Rohit Kumar"
-              class="profile-image" />
-            <div class="profile-info">
-              <h1>Rohit Kumar</h1>
-              <h2>Salesforce Technical Architect</h2>
-              <p class="text-white">
-                10+ years of IT experience | 6+ years in Salesforce
-              </p>
-            </div>
+    <div class="resume">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Profile -->
+        <div class="profile-section">
+          <div class="profile-photo-container">
+            <img src="Assets/images/me.jpg" alt="Rohit Kumar" class="profile-photo" />
+            <div class="status-badge" title="Available for opportunities"></div>
           </div>
-
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="fas fa-envelope text-white"></i>
-              <span class="text-white">rohit007salesforce@gmail.com</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone text-white"></i>
-              <span class="text-white">+60 1121764063</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt text-white"></i>
-              <span class="text-white">Cyberjaya, Selangor, Malaysia</span>
-            </div>
-          </div>
-
-          <div class="social-links">
-            <a
-              href="https://www.linkedin.com/in/rohit-kumar-81916b190/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              title="LinkedIn">
-              <img
-                src="Assets/icons/linkedein.svg"
-                alt="LinkedIn"
-                class="social-icon" />
-            </a>
-            <a
-              href="https://x.com/RohitGu83309245"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              title="Twitter/X">
-              <img
-                src="Assets/icons/twitter.svg"
-                alt="Twitter/X"
-                class="social-icon" />
-            </a>
-            <a
-              href="https://www.youtube.com/@SalesforceHunt"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              title="YouTube">
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a
-              href="https://www.salesforce.com/trailblazer/cloudyrohit"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              title="Trailhead">
-              <img
-                src="Assets/icons/Trailhead_old.svg"
-                alt="Trailhead"
-                class="social-icon" />
-            </a>
-            <a
-              href="https://salesforcehunt.blogspot.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-link"
-              title="Blog">
-              <i class="fas fa-blog"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Agentforce Level 3 Badge -->
-        <div class="agentforce-badge">
-          <img
-            src="Assets/images/banner-level-3 (1).png"
-            alt="Agentforce Level 3 Badge"
-            class="badge-image" />
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Left Column -->
-        <div class="lg:col-span-1 space-y-8">
-          <!-- About Section -->
-          <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="section-title">
-              <i class="fas fa-user text-blue-600"></i>
-              About
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              Salesforce Technical Architect with 10+ years of IT experience
-              including 6+ years specializing in Salesforce CRM platform.
-              Expertise in system and application architecture, administration,
-              development, configuration, implementation, Lightning components,
-              and integration. Passionate about creating innovative solutions
-              that drive business value.
-            </p>
-          </div>
-
-          <!-- Education Section -->
-          <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="section-title">
-              <i class="fas fa-graduation-cap text-blue-600"></i>
-              Education
-            </h3>
-            <div class="space-y-4">
-              <div class="education-item">
-                <div class="education-school">UPTU University</div>
-                <div class="education-degree">
-                  Bachelor in Information Technology
-                </div>
-                <div class="education-details">
-                  <span>
-                    <i class="fas fa-map-marker-alt mr-1"></i>
-                    Lucknow, India
-                  </span>
-                  <span>
-                    <i class="fas fa-calendar-alt mr-1"></i>
-                    2014
-                  </span>
-                </div>
-              </div>
-              <div class="education-item">
-                <div class="education-school">FIT Engineering College</div>
-                <div class="education-degree">B.Tech</div>
-                <div class="education-details">
-                  <span>
-                    <i class="fas fa-map-marker-alt mr-1"></i>
-                    Meerut, India
-                  </span>
-                  <span>
-                    <i class="fas fa-calendar-alt mr-1"></i>
-                    2010
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Achievements Section -->
-          <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <h3 class="section-title">
-              <i class="fas fa-trophy text-blue-600"></i>
-              Achievements
-            </h3>
-            <div class="space-y-4">
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="fas fa-trophy"></i>
-                </div>
-                <h4 class="font-semibold text-lg mb-2">Agentforce Innovator</h4>
-                <div class="flex items-center text-sm text-gray-600">
-                  <i class="fas fa-trailhead text-blue-500 mr-2"></i>
-                  <span>Trailhead</span>
-                </div>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon">
-                  <i class="fas fa-star"></i>
-                </div>
-                <h4 class="font-semibold text-lg mb-2">All Star Ranger</h4>
-                <div class="flex items-center text-sm text-gray-600">
-                  <i class="fas fa-trailhead text-blue-500 mr-2"></i>
-                  <span>Trailblazer</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Publications Section -->
-          <div class="card" data-aos="fade-up" data-aos-delay="400">
-            <h3 class="section-title">
-              <i class="fas fa-book text-blue-600"></i>
-              Publications
-            </h3>
-            <div class="space-y-4">
-              <div class="publication-card">
-                <div class="flex items-start">
-                  <div class="bg-purple-100 p-3 rounded-full mr-4">
-                    <i
-                      class="fas fa-graduation-cap text-purple-600 text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold text-lg mb-2">
-                      VS Code Tips and Tricks
-                    </h4>
-                    <div class="flex items-center text-sm text-gray-600 mb-2">
-                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                      <span>Udemy Course</span>
-                    </div>
-                    <a
-                      href="https://www.udemy.com/course/mastering-visual-studio-code-2022-with-salesforce/?couponCode=ST7MT290425G3"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="publication-link">
-                      <i class="fas fa-external-link-alt"></i>
-                      View Course
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="publication-card">
-                <div class="flex items-start">
-                  <div class="bg-purple-100 p-3 rounded-full mr-4">
-                    <i class="fas fa-code text-purple-600 text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold text-lg mb-2">Dark Theme</h4>
-                    <div class="flex items-center text-sm text-gray-600 mb-2">
-                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                      <span>VS Code Extension</span>
-                    </div>
-                    <a
-                      href="https://marketplace.visualstudio.com/items?itemName=SalesforceHunt.salesforcehunt-dark"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="publication-link">
-                      <i class="fas fa-external-link-alt"></i>
-                      View Extension
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="publication-card">
-                <div class="flex items-start">
-                  <div class="bg-purple-100 p-3 rounded-full mr-4">
-                    <i class="fab fa-chrome text-purple-600 text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold text-lg mb-2">
-                      Salesforce Deployment Tracker
-                    </h4>
-                    <div class="flex items-center text-sm text-gray-600 mb-2">
-                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                      <span>Chrome Extension</span>
-                    </div>
-                    <a
-                      href="https://chromewebstore.google.com/detail/salesforce-deployment-tra/apcmonlfpedicmdcneglaekjlcpgajmp"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="publication-link">
-                      <i class="fas fa-external-link-alt"></i>
-                      View Extension
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="publication-card">
-                <div class="flex items-start">
-                  <div class="bg-purple-100 p-3 rounded-full mr-4">
-                    <i class="fab fa-chrome text-purple-600 text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold text-lg mb-2">
-                      Agentforce Shortcuts
-                    </h4>
-                    <div class="flex items-center text-sm text-gray-600 mb-2">
-                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                      <span>Chrome Extension</span>
-                    </div>
-                    <a
-                      href="https://chromewebstore.google.com/detail/agentforce-shortcuts/cdioehnonjhclnibhjcmmlglglmcfocm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="publication-link">
-                      <i class="fas fa-external-link-alt"></i>
-                      View Extension
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="publication-card">
-                <div class="flex items-start">
-                  <div class="bg-purple-100 p-3 rounded-full mr-4">
-                    <i class="fas fa-blog text-purple-600 text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold text-lg mb-2">Blog</h4>
-                    <div class="flex items-center text-sm text-gray-600 mb-2">
-                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                      <span>Website</span>
-                    </div>
-                    <a
-                      href="https://salesforcehunt.blogspot.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="publication-link">
-                      <i class="fas fa-external-link-alt"></i>
-                      Visit Blog
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column -->
-        <div class="lg:col-span-2 space-y-8">
-          <!-- Work Experience Section -->
-          <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="section-title">
-              <i class="fas fa-briefcase text-blue-600"></i>
-              Work Experience
-            </h3>
-
-            <div class="experience-item">
-              <div class="experience-header">
-                <div>
-                  <div class="experience-title">Technical Architect</div>
-                  <div class="experience-company">Dell Technologies</div>
-                </div>
-                <div class="experience-date">Jun 2022 - Present</div>
-              </div>
-              <ul class="experience-achievements">
-                <li>
-                  Led the design and implementation of complex Salesforce
-                  solutions for enterprise clients
-                </li>
-                <li>
-                  Automated processes using Lightning Flow, LWC, and Apex
-                  frameworks
-                </li>
-                <li>
-                  Developed custom REST API frameworks for seamless integrations
-                </li>
-                <li>Optimized Apex code and improved system performance</li>
-                <li>
-                  Mentored junior developers and conducted technical training
-                  sessions
-                </li>
-              </ul>
-            </div>
-
-            <div class="experience-item">
-              <div class="experience-header">
-                <div>
-                  <div class="experience-title">Technical Consultant</div>
-                  <div class="experience-company">
-                    Perficient India Pvt. Ltd.
-                  </div>
-                </div>
-                <div class="experience-date">Dec 2020 - Apr 2022</div>
-              </div>
-              <ul class="experience-achievements">
-                <li>
-                  Designed and implemented Salesforce solutions for multiple
-                  clients
-                </li>
-                <li>Developed custom components using Apex, LWC, and Aura</li>
-                <li>
-                  Integrated Salesforce with external systems using REST APIs
-                </li>
-                <li>Optimized existing code to meet governor limits</li>
-                <li>
-                  Participated in all phases of SDLC from requirements to
-                  deployment
-                </li>
-              </ul>
-            </div>
-
-            <div class="experience-item">
-              <div class="experience-header">
-                <div>
-                  <div class="experience-title">Software Engineer</div>
-                  <div class="experience-company">
-                    SmartData Enterprises (I) Ltd.
-                  </div>
-                </div>
-                <div class="experience-date">Apr 2018 - Nov 2020</div>
-              </div>
-              <ul class="experience-achievements">
-                <li>Developed Salesforce solutions for various industries</li>
-                <li>
-                  Implemented Web-to-Lead functionality and campaign management
-                </li>
-                <li>Created custom objects, validation rules, and workflows</li>
-                <li>Migrated data from legacy systems to Salesforce</li>
-                <li>Developed reports and dashboards for business users</li>
-              </ul>
-            </div>
-
-            <div class="experience-item">
-              <div class="experience-header">
-                <div>
-                  <div class="experience-title">Software Engineer</div>
-                  <div class="experience-company">
-                    Skyway Technocom Consultants Pvt. Ltd.
-                  </div>
-                </div>
-                <div class="experience-date">Aug 2014 - Feb 2018</div>
-              </div>
-              <ul class="experience-achievements">
-                <li>Started career in software development</li>
-                <li>Gained foundational knowledge in IT systems</li>
-                <li>Developed problem-solving and analytical skills</li>
-                <li>
-                  Worked on various IT projects building technical expertise
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Technical Expertise Section -->
-          <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="section-title">
-              <i class="fas fa-wrench text-blue-600"></i>
-              Technical Expertise
-            </h3>
-            <div class="expertise-grid">
-              <div class="expertise-item">
-                <div class="expertise-header">
-                  <div class="expertise-icon">
-                    <i class="fas fa-robot"></i>
-                  </div>
-                  <h4 class="expertise-title">Process Automation</h4>
-                </div>
-                <ul class="expertise-list">
-                  <li>
-                    Automated processes using Lightning Flow, Workflow Rules,
-                    Approval Processes, LWC, and Apex
-                  </li>
-                  <li>
-                    Developed productivity tools that reduced manual effort by
-                    60%
-                  </li>
-                  <li>
-                    Implemented complex business logic through declarative tools
-                  </li>
-                </ul>
-              </div>
-
-              <div class="expertise-item">
-                <div class="expertise-header">
-                  <div class="expertise-icon">
-                    <i class="fas fa-project-diagram"></i>
-                  </div>
-                  <h4 class="expertise-title">Solution Design</h4>
-                </div>
-                <ul class="expertise-list">
-                  <li>Led requirements gathering and analysis</li>
-                  <li>
-                    Designed high-level solutions and conducted impact
-                    assessments
-                  </li>
-                  <li>
-                    Utilized AI technologies like OpenAI for innovative
-                    solutions
-                  </li>
-                </ul>
-              </div>
-
-              <div class="expertise-item">
-                <div class="expertise-header">
-                  <div class="expertise-icon">
-                    <i class="fas fa-users"></i>
-                  </div>
-                  <h4 class="expertise-title">Technical Leadership</h4>
-                </div>
-                <ul class="expertise-list">
-                  <li>Worked across Sales, Service and Experience Clouds</li>
-                  <li>Developed Custom REST API Framework for integrations</li>
-                  <li>Optimized Apex code and improved performance</li>
-                </ul>
-              </div>
-
-              <div class="expertise-item">
-                <div class="expertise-header">
-                  <div class="expertise-icon">
-                    <i class="fas fa-file-alt"></i>
-                  </div>
-                  <h4 class="expertise-title">Documentation & Training</h4>
-                </div>
-                <ul class="expertise-list">
-                  <li>Created comprehensive technical documentation</li>
-                  <li>Trained and mentored 20+ resources</li>
-                  <li>Developed knowledge transfer materials</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-16 border-t border-gray-700">
-      <div class="container text-center">
-        <p class="text-gray-300">
-          © 2025 Rohit Kumar. All rights reserved. |
-          <a
-            href="mailto:rohit007salesforce@gmail.com"
-            class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
-            Contact
+          <h1 class="profile-name">Rohit Kumar</h1>
+          <p class="profile-title">Salesforce Sr. Software Engineer</p>
+          <p class="profile-summary">
+            Seasoned Salesforce professional with 10+ years in IT and 6+ years specializing in
+            Salesforce CRM. Expert in application architecture, LWC development, and complex
+            system integrations.
+          </p>
+          <a href="Assets/doc/Rohit_Kumar_SFDC.pdf" download class="btn-download">
+            <i class="fas fa-download"></i>
+            Download Resume
           </a>
-        </p>
-      </div>
-    </footer>
+        </div>
 
-    <script>
-      // Initialize AOS animations with optimized settings
-      AOS.init({
-        duration: 600,
-        easing: "ease-out",
-        once: true,
-        offset: 50,
-        disable: "mobile", // Disable on mobile to prevent flickering
-      });
+        <!-- Badge -->
+        <div class="badge-display">
+          <img src="Assets/images/banner-level-3 (1).png" alt="Agentforce Badge" class="badge-image" />
+        </div>
 
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
+        <!-- Contact -->
+        <div class="sidebar-section">
+          <h3 class="section-title">Contact</h3>
+          <ul class="contact-list">
+            <li class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Cyberjaya, Malaysia</span>
+            </li>
+            <li class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+60 1121764063</span>
+            </li>
+            <li class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:rohit007salesforce@gmail.com">rohit007salesforce@gmail.com</a>
+            </li>
+            <li class="contact-item">
+              <i class="fab fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/cloudyrohit" target="_blank">linkedin.com/in/cloudyrohit</a>
+            </li>
+          </ul>
+        </div>
 
-      // Optimized loading - no flickering animations
-      document.addEventListener("DOMContentLoaded", function () {
-        // Cards are already visible, no need for loading animations
-        const cards = document.querySelectorAll(".card");
-        cards.forEach((card) => {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
-        });
-      });
+        <!-- Core Skills -->
+        <div class="sidebar-section">
+          <h3 class="section-title">Core Skills</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Apex</span>
+            <span class="skill-tag">LWC</span>
+            <span class="skill-tag">Aura</span>
+            <span class="skill-tag">Visualforce</span>
+            <span class="skill-tag">SOQL/SOSL</span>
+            <span class="skill-tag">REST API</span>
+            <span class="skill-tag">SOAP API</span>
+            <span class="skill-tag">Sales Cloud</span>
+            <span class="skill-tag">Service Cloud</span>
+            <span class="skill-tag">Experience Cloud</span>
+          </div>
+        </div>
 
-      // Intersection Observer for performance
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+        <!-- DevOps & Tools -->
+        <div class="sidebar-section">
+          <h3 class="section-title">DevOps & Tools</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Salesforce CLI</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Git/GitHub</span>
+            <span class="skill-tag">Copado</span>
+            <span class="skill-tag">Dell Boomi</span>
+            <span class="skill-tag">Postman</span>
+          </div>
+        </div>
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
+        <!-- Achievements -->
+        <div class="sidebar-section">
+          <h3 class="section-title">Achievements</h3>
+          <div class="achievement-item">
+            <div class="achievement-icon gold">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="achievement-text">
+              <h4>15x Salesforce Certified</h4>
+              <span>Salesforce</span>
+            </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon blue">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="achievement-text">
+              <h4>All Star Ranger</h4>
+              <span>Trailblazer</span>
+            </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon green">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="achievement-text">
+              <h4>Agentforce Innovator</h4>
+              <span>Trailhead</span>
+            </div>
+          </div>
+        </div>
 
-      // Observe all cards
-      document.querySelectorAll(".card").forEach((card) => {
-        observer.observe(card);
-      });
+        <!-- Blog -->
+        <div class="sidebar-section">
+          <h3 class="section-title">Blog</h3>
+          <div class="pub-item">
+            <div class="pub-icon blog"><i class="fas fa-blog"></i></div>
+            <div class="pub-info">
+              <h4>Salesforce Hunt</h4>
+              <a href="https://salesforcehunt.blogspot.com" target="_blank">Visit Blog</a>
+            </div>
+          </div>
+        </div>
 
-      // Add smooth hover effects to all interactive elements
-      document
-        .querySelectorAll(
-          ".card, .achievement-card, .publication-card, .experience-item, .expertise-item"
-        )
-        .forEach((element) => {
-          element.addEventListener("mouseenter", function () {
-            this.style.transform = "translateY(-5px)";
-          });
+        <!-- Certifications -->
+        <div class="sidebar-section">
+          <h3 class="section-title">Certifications</h3>
+          <div class="certs-grid">
+            <div class="cert-item">
+              <img src="Assets/certifications/Administrator.png" alt="Administrator" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/Programmer.I.png" alt="Platform Developer I" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/Programmer.II.png" alt="Platform Developer II" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/Service.Consultant.png" alt="Service Cloud" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/SalesCloudConsultant.png" alt="Sales Cloud" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/ExperienceCloudConsultant.png" alt="Experience Cloud" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/Associate.png" alt="Associate" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/AI.Associate.png" alt="AI Associate" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/JavaScript1.png" alt="JavaScript Developer" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/App.Builder.png" alt="App Builder" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/Data.Architect.Certification.png" alt="Data Architect" />
+            </div>
+            <div class="cert-item">
+              <img src="Assets/certifications/Sharing.and.Visibility.Architect.png" alt="Sharing & Visibility" />
+            </div>
+          </div>
+        </div>
 
-          element.addEventListener("mouseleave", function () {
-            this.style.transform = "translateY(0)";
-          });
-        });
+        <!-- Social Links -->
+        <div class="sidebar-section">
+          <h3 class="section-title">Connect With Me</h3>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/cloudyrohit" target="_blank" title="LinkedIn" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Rohit496" target="_blank" title="GitHub" class="social-link github"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/cloudaborohit" target="_blank" title="X (Twitter)" class="social-link twitter"><span style="font-weight:900;font-size:1.1rem;">𝕏</span></a>
+            <a href="https://www.youtube.com/@SalesforceHunt" target="_blank" title="YouTube" class="social-link youtube"><i class="fab fa-youtube"></i></a>
+            <a href="https://trailblazer.me/id/cloudyrohit" target="_blank" title="Trailhead" class="social-link trailhead"><img src="Assets/icons/Trailhead_old.svg" alt="Trailhead" style="width:24px;height:24px;"></a>
+            <a href="https://salesforcehunt.blogspot.com" target="_blank" title="Blog" class="social-link blog"><i class="fas fa-blog"></i></a>
+            <a href="https://medium.com/@cloudyrohit" target="_blank" title="Medium" class="social-link medium"><i class="fab fa-medium"></i></a>
+            <a href="https://topmate.io/cloudyrohit" target="_blank" title="Topmate" class="social-link topmate"><i class="fas fa-handshake"></i></a>
+          </div>
+        </div>
+      </aside>
 
-      // Add loading state management
-      window.addEventListener("load", function () {
-        document.body.classList.add("loaded");
-      });
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Experience -->
+        <section class="main-section">
+          <h2 class="main-heading">Professional Experience</h2>
 
-      // Add keyboard navigation support
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Tab") {
-          document.body.classList.add("keyboard-navigation");
-        }
-      });
+          <div class="exp-card">
+            <div class="exp-logo">
+              <img src="Assets/company_logos/DellTech.png" alt="Dell Technologies" />
+            </div>
+            <div class="exp-content">
+              <div class="exp-header">
+                <h3 class="exp-title">Sr. Software Engineer</h3>
+                <span class="exp-badge">Full-time</span>
+              </div>
+              <p class="exp-company">Dell Technologies</p>
+              <div class="exp-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Malaysia</span>
+                <span><i class="fas fa-calendar"></i> Jun 2022 - Present</span>
+              </div>
+              <p class="exp-desc">Leading Salesforce development for enterprise IT solutions, specializing in Experience Cloud implementations and complex system integrations.</p>
+              <ul class="exp-achievements">
+                <li>Architected and developed the Find A Partner (FAP) platform using Salesforce Experience Cloud, serving as a customer-facing partner locator system</li>
+                <li>Built custom Lightning Web Components (LWC) that enhanced user experience and reduced page load times by 35%</li>
+                <li>Developed and optimized Apex classes and triggers for seamless data management across multiple objects</li>
+                <li>Integrated Experience Cloud with Salesforce CRM, improving data synchronization accuracy by 40%</li>
+                <li>Implemented Dell Boomi middleware integration with Salesforce External Objects for real-time third-party data access</li>
+              </ul>
+            </div>
+          </div>
 
-      document.addEventListener("mousedown", function () {
-        document.body.classList.remove("keyboard-navigation");
-      });
-    </script>
+          <div class="exp-card">
+            <div class="exp-logo">
+              <img src="Assets/company_logos/Perficient-Logo.png" alt="Perficient" />
+            </div>
+            <div class="exp-content">
+              <div class="exp-header">
+                <h3 class="exp-title">Technical Consultant</h3>
+                <span class="exp-badge">Full-time</span>
+              </div>
+              <p class="exp-company">Perficient India Pvt. Ltd</p>
+              <div class="exp-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Nagpur, India</span>
+                <span><i class="fas fa-calendar"></i> Dec 2020 - Apr 2022</span>
+              </div>
+              <p class="exp-desc">Provided technical consulting for digital transformation initiatives, focusing on CRM solutions and enterprise Salesforce implementations.</p>
+              <ul class="exp-achievements">
+                <li>Led requirement analysis and created comprehensive technical documentation for multiple client projects</li>
+                <li>Designed solution architectures and developed implementation approach decisions</li>
+                <li>Delivered McKesson project - Salesforce development improving healthcare distribution and services</li>
+                <li>Collaborated with cross-functional teams to ensure successful project delivery within timelines</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-logo">
+              <img src="Assets/company_logos/smartdata.png" alt="SmartData Enterprises" />
+            </div>
+            <div class="exp-content">
+              <div class="exp-header">
+                <h3 class="exp-title">Software Engineer</h3>
+                <span class="exp-badge">Full-time</span>
+              </div>
+              <p class="exp-company">SmartData Enterprises (I) Ltd</p>
+              <div class="exp-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Nagpur, India</span>
+                <span><i class="fas fa-calendar"></i> Apr 2018 - Nov 2020</span>
+              </div>
+              <p class="exp-desc">Developed Salesforce solutions for healthcare and nutrition industry clients, focusing on CRM customization and data management.</p>
+              <ul class="exp-achievements">
+                <li>Mapped technical requirements and delivered 15+ design documents, enabling 30% faster CRM feature rollouts</li>
+                <li>Developed custom modules extending SFDC standard components using Apex, Visualforce, and utilities</li>
+                <li>Implemented Web-to-Lead functionality to capture and track leads from client websites</li>
+                <li>Created custom validation rules, formulas, reports, and dashboards for data accuracy</li>
+                <li>Designed, developed, and deployed Apex Classes, Controller Classes, and Apex Triggers</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-logo">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="exp-content">
+              <div class="exp-header">
+                <h3 class="exp-title">Software Engineer</h3>
+                <span class="exp-badge">Full-time</span>
+              </div>
+              <p class="exp-company">Skyway Technocom Consultants</p>
+              <div class="exp-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Pune, India</span>
+                <span><i class="fas fa-calendar"></i> Aug 2014 - Feb 2018</span>
+              </div>
+              <p class="exp-desc">Started career in Salesforce development, focusing on CRM customization and system administration.</p>
+              <ul class="exp-achievements">
+                <li>Customized SFDC applications to meet business needs, contributing to 25% reduction in manual operations</li>
+                <li>Managed user administration including Roles, Profiles, Permission Sets, and Network access setup</li>
+                <li>Developed custom objects, tabs, validation rules, and data models</li>
+                <li>Implemented security configurations by customizing Salesforce Profiles and Roles</li>
+                <li>Engineered dynamic reports and dashboards tailored to different business unit requirements</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="main-section">
+          <h2 class="main-heading">Key Projects</h2>
+          <div class="projects-grid">
+
+            <div class="project-card">
+              <div class="project-header">
+                <h3 class="project-title"><i class="fas fa-handshake"></i> Find A Partner (FAP)</h3>
+                <span class="project-industry">Technology</span>
+              </div>
+              <div class="project-meta">
+                <span><i class="fas fa-building"></i> Dell Technologies</span>
+                <span><i class="fas fa-calendar"></i> Jul 2022 - Sep 2024</span>
+              </div>
+              <p class="project-desc">
+                Designed and developed a customer-facing partner locator platform enabling customers to discover and connect with Dell's certified partners worldwide.
+              </p>
+              <div class="project-highlights">
+                <h5>Key Contributions</h5>
+                <ul>
+                  <li>Architected the entire FAP platform using Salesforce Experience Cloud</li>
+                  <li>Built custom LWC components for partner search and filtering</li>
+                  <li>Integrated Dell Boomi middleware for real-time data sync</li>
+                  <li>Achieved 40% improvement in data sync accuracy</li>
+                </ul>
+              </div>
+              <div class="project-tech">
+                <span class="tech-tag">Experience Cloud</span>
+                <span class="tech-tag">LWC</span>
+                <span class="tech-tag">Apex</span>
+                <span class="tech-tag">Dell Boomi</span>
+                <span class="tech-tag">REST API</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-header">
+                <h3 class="project-title"><i class="fas fa-leaf"></i> Herbalife Inc</h3>
+                <span class="project-industry">Healthcare</span>
+              </div>
+              <div class="project-meta">
+                <span><i class="fas fa-building"></i> SmartData Enterprises</span>
+                <span><i class="fas fa-calendar"></i> Dec 2018 - Nov 2020</span>
+              </div>
+              <p class="project-desc">
+                Implemented comprehensive Salesforce CRM solution for Herbalife, focusing on streamlining distributor management and campaign automation.
+              </p>
+              <div class="project-highlights">
+                <h5>Key Contributions</h5>
+                <ul>
+                  <li>Designed and deployed Apex Classes and Triggers</li>
+                  <li>Created complex Workflow rules and Approval processes</li>
+                  <li>Built custom Lightning components for onboarding</li>
+                  <li>Developed reports and dashboards for sales tracking</li>
+                </ul>
+              </div>
+              <div class="project-tech">
+                <span class="tech-tag">Sales Cloud</span>
+                <span class="tech-tag">Apex Triggers</span>
+                <span class="tech-tag">Workflow Rules</span>
+                <span class="tech-tag">Lightning</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-header">
+                <h3 class="project-title"><i class="fas fa-pills"></i> McKesson Corporation</h3>
+                <span class="project-industry">Healthcare</span>
+              </div>
+              <div class="project-meta">
+                <span><i class="fas fa-building"></i> Perficient India</span>
+                <span><i class="fas fa-calendar"></i> Dec 2020 - May 2021</span>
+              </div>
+              <p class="project-desc">
+                Salesforce development project for McKesson, improving pharmaceutical distribution and healthcare services management.
+              </p>
+              <div class="project-highlights">
+                <h5>Key Contributions</h5>
+                <ul>
+                  <li>Conducted comprehensive requirement analysis</li>
+                  <li>Designed solution architecture for healthcare workflows</li>
+                  <li>Developed custom solutions for order management</li>
+                  <li>Led planning sessions for timely project delivery</li>
+                </ul>
+              </div>
+              <div class="project-tech">
+                <span class="tech-tag">Service Cloud</span>
+                <span class="tech-tag">Apex</span>
+                <span class="tech-tag">Lightning</span>
+                <span class="tech-tag">Integration</span>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-header">
+                <h3 class="project-title"><i class="fas fa-hospital"></i> CRC Health Group</h3>
+                <span class="project-industry">Healthcare</span>
+              </div>
+              <div class="project-meta">
+                <span><i class="fas fa-building"></i> SmartData Enterprises</span>
+                <span><i class="fas fa-calendar"></i> Apr 2018 - Nov 2018</span>
+              </div>
+              <p class="project-desc">
+                CRM transformation project transitioning operations from spreadsheet-based tracking to comprehensive Salesforce CRM solution.
+              </p>
+              <div class="project-highlights">
+                <h5>Key Contributions</h5>
+                <ul>
+                  <li>Led migration from spreadsheets to Salesforce CRM</li>
+                  <li>Achieved 20% productivity increase</li>
+                  <li>Developed custom objects and data models</li>
+                  <li>Created automated processes reducing manual entry</li>
+                </ul>
+              </div>
+              <div class="project-tech">
+                <span class="tech-tag">Sales Cloud</span>
+                <span class="tech-tag">Data Migration</span>
+                <span class="tech-tag">Custom Objects</span>
+                <span class="tech-tag">Reports</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="main-section">
+          <h2 class="main-heading">Languages</h2>
+          <div class="languages-container">
+            <div class="lang-item">
+              <div class="lang-icon"><i class="fas fa-language"></i></div>
+              <div>
+                <div class="lang-name">Hindi</div>
+                <div class="lang-level">Native Speaker</div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div class="lang-icon"><i class="fas fa-globe"></i></div>
+              <div>
+                <div class="lang-name">English</div>
+                <div class="lang-level">Professional Proficiency</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="main-section">
+          <h2 class="main-heading">Education</h2>
+          <div class="edu-card">
+            <div class="edu-item">
+              <div class="edu-logo">
+                <img src="Assets/images/uptu.png" alt="UPTU" />
+              </div>
+              <div class="edu-content">
+                <h3 class="edu-school">UPTU University</h3>
+                <p class="edu-degree">Bachelor in Information Technology</p>
+                <div class="edu-meta">
+                  <span><i class="fas fa-map-marker-alt"></i> Lucknow</span>
+                  <span><i class="fas fa-calendar"></i> 2014</span>
+                </div>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-logo">
+                <img src="Assets/images/FITlogo.png" alt="FIT Engineering College" />
+              </div>
+              <div class="edu-content">
+                <h3 class="edu-school">FIT Engineering College</h3>
+                <p class="edu-degree">B.Tech</p>
+                <div class="edu-meta">
+                  <span><i class="fas fa-map-marker-alt"></i> Meerut</span>
+                  <span><i class="fas fa-calendar"></i> 2010</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
   </body>
 </html>
