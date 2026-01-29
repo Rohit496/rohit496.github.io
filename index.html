@@ -39,18 +39,22 @@
 
       // Track resume download
       function trackResumeDownload() {
+        console.log('Resume download tracked');
         gtag('event', 'resume_download', {
           'event_category': 'engagement',
           'event_label': 'Resume PDF Download'
         });
+        return true;
       }
 
       // Track profile visits
       function trackProfileVisit(platform) {
+        console.log('Profile visit tracked:', platform);
         gtag('event', 'profile_visit', {
           'event_category': 'engagement',
           'event_label': platform
         });
+        return true;
       }
     </script>
   </head>
