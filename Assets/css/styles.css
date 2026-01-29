@@ -1,0 +1,1187 @@
+/* ==========================================================================
+   Rohit Kumar - Portfolio Styles
+   Professional Salesforce Sr. Software Engineer Portfolio
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS Variables & Design Tokens
+   ========================================================================== */
+:root {
+  /* Primary Colors */
+  --primary: #0176d3;
+  --primary-dark: #014486;
+  --primary-light: #e5f2ff;
+  --secondary: #5867e8;
+
+  /* Accent Colors */
+  --accent: #04844b;
+  --accent-light: #e3f3eb;
+  --orange: #ff5d2d;
+  --purple: #9050e9;
+
+  /* Text Colors */
+  --text-dark: #181818;
+  --text-primary: #2e2e2e;
+  --text-secondary: #555555;
+  --text-muted: #707070;
+
+  /* Background Colors */
+  --bg-white: #ffffff;
+  --bg-light: #f8f9fa;
+  --bg-gray: #f1f3f5;
+  --border: #dee2e6;
+
+  /* Sidebar Colors */
+  --sidebar-dark: #0d1b2a;
+  --sidebar-mid: #1b263b;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #0176d3 0%, #5867e8 100%);
+  --gradient-accent: linear-gradient(135deg, #ff5d2d 0%, #ff8f6b 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.15);
+
+  /* Border Radius */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* ==========================================================================
+   2. Base & Reset Styles
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--sidebar-mid);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   3. Layout - Main Container
+   ========================================================================== */
+.resume {
+  max-width: 1300px;
+  margin: 0 auto;
+  background: var(--sidebar-dark);
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   4. Sidebar Styles
+   ========================================================================== */
+.sidebar {
+  background: var(--sidebar-dark);
+  color: white;
+  padding: 0;
+}
+
+/* Profile Section */
+.profile-section {
+  text-align: center;
+  padding: 40px 28px 32px;
+  background: linear-gradient(180deg, rgba(1, 118, 211, 0.2) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-photo-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 24px;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.status-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  background: #22c55e;
+  border: 4px solid var(--sidebar-dark);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.5);
+}
+
+.profile-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.profile-title {
+  font-size: 0.9rem;
+  color: #7ec8f8;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.profile-summary {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   5. Buttons
+   ========================================================================== */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(1, 118, 211, 0.4);
+}
+
+.btn-download:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(1, 118, 211, 0.5);
+}
+
+/* ==========================================================================
+   6. Badge Display
+   ========================================================================== */
+.badge-display {
+  padding: 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.badge-image {
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.badge-image:hover {
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   7. Sidebar Sections
+   ========================================================================== */
+.sidebar-section {
+  padding: 24px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7ec8f8;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: "";
+  width: 3px;
+  height: 14px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   8. Contact List
+   ========================================================================== */
+.contact-list {
+  list-style: none;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:hover {
+  color: white;
+  padding-left: 6px;
+}
+
+.contact-item i {
+  width: 20px;
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.contact-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: #7ec8f8;
+}
+
+/* ==========================================================================
+   9. Skills
+   ========================================================================== */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-tag:hover {
+  background: rgba(1, 118, 211, 0.3);
+  border-color: rgba(1, 118, 211, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   10. Achievements
+   ========================================================================== */
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.achievement-item:last-child {
+  border-bottom: none;
+}
+
+.achievement-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.achievement-icon.gold {
+  background: linear-gradient(135deg, #f7b733, #fc4a1a);
+  box-shadow: 0 4px 12px rgba(247, 183, 51, 0.3);
+}
+
+.achievement-icon.blue {
+  background: var(--gradient-primary);
+  box-shadow: 0 4px 12px rgba(1, 118, 211, 0.3);
+}
+
+.achievement-icon.green {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  box-shadow: 0 4px 12px rgba(17, 153, 142, 0.3);
+}
+
+.achievement-text h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 3px;
+}
+
+.achievement-text span {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
+   11. Publications
+   ========================================================================== */
+.pub-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pub-item:last-child {
+  border-bottom: none;
+}
+
+.pub-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.pub-icon.blog {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+.pub-icon.youtube {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.pub-icon.code {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+}
+
+.pub-icon.course {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+.pub-info h4 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 3px;
+}
+
+.pub-info a {
+  font-size: 0.72rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.pub-info a:hover {
+  color: #7ec8f8;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   12. Certifications Accordion
+   ========================================================================== */
+.cert-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cert-category {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cert-category-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.cert-category-header:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cert-category-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px;
+}
+
+.cert-category-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cert-category.copado .cert-category-icon img {
+  border-radius: 50%;
+}
+
+/* Total certifications header */
+.cert-total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cert-total-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, rgba(1, 118, 211, 0.3), rgba(88, 103, 232, 0.3));
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Fix for images with white background */
+.cert-item img.no-bg {
+  background: transparent !important;
+  border-radius: 8px;
+  padding: 0;
+}
+
+.cert-category-info {
+  flex: 1;
+}
+
+.cert-category-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.cert-category-count {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cert-category-arrow {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+  font-size: 0.75rem;
+}
+
+.cert-category.active .cert-category-arrow {
+  transform: rotate(180deg);
+}
+
+.cert-category-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.cert-category.active .cert-category-content {
+  max-height: 500px;
+  padding: 12px;
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.cert-item {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 10px 6px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cert-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.cert-item img {
+  width: 100%;
+  height: auto;
+  max-width: 65px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Platform category - 3 columns with bigger icons */
+.cert-category.platform .certs-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cert-category.platform .cert-item img {
+  max-width: 70px;
+}
+
+.cert-category.copado .cert-item img {
+  max-width: 280px;
+}
+
+/* Increase max-height for platform category (more rows) */
+.cert-category.platform.active .cert-category-content {
+  max-height: 600px;
+}
+
+/* ==========================================================================
+   13. Social Links
+   ========================================================================== */
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(4, 40px);
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-link.linkedin {
+  background: #0077b5;
+  border-color: #0077b5;
+}
+
+.social-link.github {
+  background: #333;
+  border-color: #333;
+}
+
+.social-link.twitter {
+  background: #000;
+  border-color: #000;
+}
+
+.social-link.youtube {
+  background: #ff0000;
+  border-color: #ff0000;
+}
+
+.social-link.trailhead {
+  background: #00a1e0;
+  border-color: #00a1e0;
+}
+
+.social-link.blog {
+  background: #f57c00;
+  border-color: #f57c00;
+}
+
+.social-link.medium {
+  background: #000;
+  border-color: #000;
+}
+
+.social-link.topmate {
+  padding: 0;
+  overflow: hidden;
+  background: #e85a4f;
+  border-color: #e85a4f;
+}
+
+.social-link.topmate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   14. Main Content
+   ========================================================================== */
+.main-content {
+  padding: 28px 40px 0;
+  background: var(--bg-white);
+}
+
+.main-section {
+  margin-bottom: 20px;
+}
+
+.main-section:last-child {
+  margin-bottom: 0;
+}
+
+.main-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-heading::before {
+  content: "";
+  width: 4px;
+  height: 26px;
+  background: var(--gradient-primary);
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   15. Experience Cards
+   ========================================================================== */
+.exp-card {
+  display: flex;
+  gap: 20px;
+  padding: 22px 24px;
+  background: var(--bg-white);
+  border: 2px solid var(--bg-gray);
+  border-radius: var(--radius-lg);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.exp-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exp-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.exp-card:hover::before {
+  opacity: 1;
+}
+
+.exp-logo {
+  width: 52px;
+  height: 52px;
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid var(--bg-gray);
+}
+
+.exp-logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.exp-logo i {
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+.exp-content {
+  flex: 1;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.exp-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.exp-badge {
+  padding: 4px 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.exp-company {
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.exp-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.exp-meta i {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.exp-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.exp-achievements {
+  list-style: none;
+}
+
+.exp-achievements li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.exp-achievements li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   16. Projects Grid
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.project-card {
+  background: var(--bg-white);
+  border: 2px solid var(--bg-gray);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+.project-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-title i {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+.project-industry {
+  padding: 4px 10px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.project-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.project-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.project-highlights h5 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-highlights ul {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.project-highlights li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.project-highlights li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.65rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag {
+  padding: 4px 10px;
+  background: var(--bg-gray);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.tech-tag:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   17. Education Cards
+   ========================================================================== */
+.edu-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 20px 24px;
+  background: var(--bg-white);
+  border: 2px solid var(--bg-gray);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+}
+
+.edu-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.edu-logo {
+  width: 48px;
+  height: 48px;
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid var(--bg-gray);
+}
+
+.edu-logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.edu-school {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.edu-degree {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.edu-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.edu-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================================
+   18. Languages
+   ========================================================================== */
+.languages-container {
+  display: flex;
+  gap: 16px;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--bg-white);
+  border: 2px solid var(--bg-gray);
+  border-radius: var(--radius-lg);
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.lang-item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+}
+
+.lang-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.lang-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1px;
+}
+
+.lang-level {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   19. Responsive Design
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .resume {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 40px 32px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    padding: 28px 20px;
+  }
+
+  .exp-card {
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .exp-logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .exp-header {
+    flex-direction: column;
+  }
+
+  .project-card {
+    padding: 22px;
+  }
+
+  .project-header {
+    flex-direction: column;
+  }
+
+  .languages-container {
+    flex-direction: column;
+  }
+
+  .certs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .edu-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   20. Print Styles
+   ========================================================================== */
+@media print {
+  .resume {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .btn-download {
+    display: none;
+  }
+}
